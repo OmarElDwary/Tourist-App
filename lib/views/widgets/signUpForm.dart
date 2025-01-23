@@ -14,6 +14,7 @@ class SignUpForm extends StatelessWidget {
   final VoidCallback toggleConfirmPassword;
 
   const SignUpForm({
+    super.key,
     required this.formKey,
     required this.fullNameController,
     required this.emailController,

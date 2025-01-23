@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class LoginFooter extends StatelessWidget {
   final VoidCallback onSignUpPressed;
 
-  const LoginFooter({required this.onSignUpPressed});
+  const LoginFooter({super.key, required this.onSignUpPressed});
 
   @override
   Widget build(BuildContext context) {
