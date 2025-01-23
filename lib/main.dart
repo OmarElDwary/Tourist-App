@@ -6,12 +6,15 @@ import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_state.dart';
 import 'package:tourist_app/views/screens/home_screen.dart';
 import 'package:tourist_app/views/screens/login_screen.dart';
+import 'package:tourist_app/views/screens/tabs_screen.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -45,7 +48,7 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/login': (context) => LoginScreen(),
-          '/home': (context) => HomeScreen(),
+          '/home': (context) => TabsScreen(),
         },
       ),
     );
