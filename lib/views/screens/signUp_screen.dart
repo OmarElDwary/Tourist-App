@@ -1,5 +1,10 @@
+import 'dart:convert';
+import 'package:crypto/crypto.dart'; // Password hashing import
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tourist_app/data/data_handling.dart';
+import 'package:tourist_app/models/user_model.dart';
 import 'package:tourist_app/views/screens/home_screen.dart';
 import 'package:tourist_app/views/screens/login_screen.dart';
 import 'package:tourist_app/views/widgets/buttons/CustomButton.dart';
@@ -16,21 +21,78 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  bool hiddenPassword = true;
-  bool confirmPasswords = true;
+  final _formKey = GlobalKey<FormState>();
+  final DataHandling dataHandling = DataHandling(Dio());
+
   TextEditingController fullName = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
 
+  bool hiddenPassword = true;
+  bool confirmPasswords = true;
+
+  void togglePassword() {
+    setState(() {
+      hiddenPassword = !hiddenPassword;
+    });
+  }
+
+  void toggleConfirmPassword() {
+    setState(() {
+      confirmPasswords = !confirmPasswords;
+    });
+  }
+
+  String hashPassword(String password) {
+    return sha256.convert(utf8.encode(password)).toString();
+  }
+
+  Future<void> _handleSignUp() async {
+    if (_formKey.currentState!.validate()) {
+      if (password.text != confirmPassword.text) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Passwords do not match!')),
+        );
+        return;
+      }
+
+      try {
+        final hashedPassword = hashPassword(password.text.trim());
+        final newUser = UserModel(
+          id: 0,
+          name: fullName.text.trim(),
+          email: email.text.trim(),
+          phone: phoneNumber.text.trim(),
+          passwordHash: hashedPassword,
+        );
+
+        await dataHandling.addUser(newUser);
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('User signed up successfully!')),
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error signing up: $e')),
+        );
+      }
+    }
+  }
+
+/*
   Future<void> _savedUserData() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString("Name", fullName.text);
     await prefs.setString("Email", email.text);
     await prefs.setString("Password", password.text);
     await prefs.setString("confirmPassword", confirmPassword.text);
+
     if (phoneNumber.text.isNotEmpty) {
       await prefs.setInt("Phone", int.parse(phoneNumber.text));
     } else {
@@ -50,19 +112,7 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
-
-  void togglePassword() {
-    setState(() {
-      hiddenPassword = !hiddenPassword;
-    });
-  }
-
-  void toggleConfirmPassword() {
-    setState(() {
-      confirmPasswords = !confirmPasswords;
-    });
-  }
-
+*/
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -93,15 +143,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   CustomButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _savedUserData();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                        );
-                      }
-                    },
+                    onPressed: _handleSignUp,
                     title: 'Sign UP',
                   ),
                   SizedBox(height: screenHeight * 0.02),

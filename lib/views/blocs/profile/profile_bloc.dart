@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tourist_app/services/user_services.dart';
+
 import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/blocs/profile/profile_state.dart';
 

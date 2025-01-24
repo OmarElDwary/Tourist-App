@@ -11,43 +11,8 @@ import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/blocs/profile/profile_state.dart';
 import 'package:tourist_app/views/widgets/list_tile.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
-
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  String fullName = "";
-  String email = "";
-  String password = "";
-  String hashedPassword = "";
-
-  @override
-  void initState() {
-    super.initState();
-    getUserData(); // Load user data from Shared Preferences
-  }
-
-  // Function to load user data from Shared Preferences
-  Future<void> getUserData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      fullName = prefs.getString('Name') ?? 'No Name'; // Get full name
-      email = prefs.getString('Email') ?? ''; // Get email
-      password = prefs.getString('Password') ?? ""; //get password
-      hashedPassword = hashPassword(password); // Hashing password
-    });
-  }
-
-  // Function to hash password
-  String hashPassword(String password) {
-    final bytes = utf8.encode(password);
-    final digest = sha256.convert(bytes);
-    return digest.toString();
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
