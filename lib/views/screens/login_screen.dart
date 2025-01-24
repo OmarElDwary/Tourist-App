@@ -5,6 +5,7 @@ import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_event.dart';
 import 'package:tourist_app/views/blocs/auth/auth_state.dart';
 import 'package:tourist_app/views/screens/home_screen.dart';
+import 'package:tourist_app/views/screens/profile_screen.dart';
 import 'package:tourist_app/views/screens/signUp_screen.dart';
 import 'package:tourist_app/views/widgets/backgroundImage.dart';
 import 'package:tourist_app/views/widgets/buttons/CustomButton.dart';
@@ -49,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => HomeScreen(),
+                  builder: (context) => ProfileScreen(),
                 ),
               );
             } else if (state is AuthError) {

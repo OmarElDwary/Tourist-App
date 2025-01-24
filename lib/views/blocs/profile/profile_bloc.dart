@@ -18,17 +18,24 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(ProfileLoading());
     try {
       final prefs = await SharedPreferences.getInstance();
-      final userData = prefs.getString('usersData');
-      if (userData != null) {
-        final userDataMap = json.decode(userData) as Map<String, dynamic>;
-        emit(ProfileLoaded(
-          name: userDataMap['name'] ?? '',
-          email: userDataMap['email'] ?? '',
-          avatarUrl: userDataMap['image'] ?? "assets/images/no_image.png",
-        ));
+      final name = prefs.getString('Name');
+      final email = prefs.getString('Email');
+
+      //if (userData != null) {
+      //final List<dynamic> userDataList = json.decode(userData);
+      //final userDataMap = json.decode(userData) as Map<String, dynamic>;
+      //final userDataMap = userDataList[0];
+
+      emit(ProfileLoaded(
+        name: name ?? '',
+        email: email ?? '',
+        avatarUrl: "assets/images/no_image.png",
+      ));
+      /*
       } else {
         emit(ProfileError('Failed to load profile: User data not found'));
       }
+      */
     } catch (e) {
       emit(ProfileError('Failed to load profile: ${e.toString()}'));
     }
