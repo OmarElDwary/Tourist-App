@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tourist_app/services/user_services.dart';
@@ -47,15 +46,17 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(ProfileLoading());
     try {
       final prefs = await SharedPreferences.getInstance();
-      final updatedUserData = {
-        'name': event.name,
-        'email': event.email,
-        'avatarUrl': event.avatarUrl,
-      };
-      await prefs.setString('user', jsonEncode(updatedUserData));
+      await prefs.setString('Name', event.name);
+      await prefs.setString('Email', event.email);
+      final updatedName = prefs.getString('Name') ?? '';
+      final updatedEmail = prefs.getString('Email') ?? '';
+      //   emit(ProfileUpdated(     name: updatedName, email: updatedEmail, avatarUrl: event.avatarUrl));
 
-      emit(ProfileUpdated(
-          name: event.name, email: event.email, avatarUrl: event.avatarUrl));
+      emit(ProfileLoaded(
+        name: updatedName,
+        email: updatedEmail,
+        avatarUrl: event.avatarUrl,
+      ));
     } catch (e) {
       emit(ProfileError('Failed to update profile: ${e.toString()}'));
     }

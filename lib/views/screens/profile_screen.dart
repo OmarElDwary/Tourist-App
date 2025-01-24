@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
-import 'package:crypto/crypto.dart';
-import 'package:tourist_app/generated/l10n.dart';
 import 'package:tourist_app/services/user_services.dart';
 import 'package:tourist_app/views/blocs/profile/profile_bloc.dart';
 import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/blocs/profile/profile_state.dart';
+import 'package:tourist_app/views/screens/edit_profile_screen.dart';
 import 'package:tourist_app/views/widgets/list_tile.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -52,36 +49,37 @@ class ProfileScreen extends StatelessWidget {
                     listTileFunc("Email", state.email, Icon(Icons.email)),
                     const SizedBox(height: 2),
                     listTileFunc("Password", "*******", Icon(Icons.password)),
-                    /*Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: ElevatedButton.icon(
-                            onPressed: 
-                            
-                            () async {
-                              final result = await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => EditProfilePage(                      ),
+                    Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BlocProvider(
+                                create: (context) => ProfileBloc(
+                                  Provider.of<UserService>(context,
+                                      listen: false),
                                 ),
-                              );
-                              if (result == true) {
-                                // Refresh user data when returning from EditProfilePage
-                                getUserData();
-                              }
-                            },
-                            icon: Icon(Icons.edit),
-                            label: Text(
-                              S.of(context).edit_profile,
-                              style: TextStyle(color: Colors.black),
+                                child: EditProfilePage(),
+                              ),
                             ),
-                            style: ElevatedButton.styleFrom(
-                              minimumSize: const Size(150, 40),
-                              padding: EdgeInsets.all(15),
-                              backgroundColor: const Color.fromARGB(255, 178, 62, 3),
-                              iconColor: const Color.fromARGB(255, 0, 0, 0),
-                            ),
-                          ),
-                        ),*/
+                          );
+                        },
+                        icon: Icon(Icons.edit),
+                        label: Text(
+                          "edit Profile",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(150, 40),
+                          padding: EdgeInsets.all(15),
+                          backgroundColor:
+                              const Color.fromARGB(255, 178, 62, 3),
+                          iconColor: const Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                    )
                   ]),
                 ),
               );
