@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tourist_app/services/user_services.dart';
+
 import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/blocs/profile/profile_state.dart';
 
@@ -18,7 +19,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(ProfileLoading());
     try {
       final prefs = await SharedPreferences.getInstance();
-      final userData = prefs.getString('usersData');
+      final userData = prefs.getString('user');
       if (userData != null) {
         final userDataMap = json.decode(userData) as Map<String, dynamic>;
         emit(ProfileLoaded(

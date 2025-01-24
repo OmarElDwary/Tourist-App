@@ -5,7 +5,7 @@ import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_event.dart';
 import 'package:tourist_app/views/blocs/auth/auth_state.dart';
 import 'package:tourist_app/views/screens/home_screen.dart';
-import 'package:tourist_app/views/screens/signUp_screen.dart';
+import 'package:tourist_app/views/screens/signup_screen.dart';
 import 'package:tourist_app/views/widgets/backgroundImage.dart';
 import 'package:tourist_app/views/widgets/buttons/CustomButton.dart';
 import 'package:tourist_app/views/widgets/loginFooter.dart';
