@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:tourist_app/services/user_services.dart';
+import 'package:tourist_app/views/screens/splash_screen.dart';
 import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_state.dart';
 import 'package:tourist_app/views/screens/home_screen.dart';
@@ -34,15 +35,7 @@ class MyApp extends StatelessWidget {
           ),
           fontFamily: 'Lora',
         ),
-        home: BlocBuilder<AuthBloc, AuthState>(
-          builder: (context, state) {
-            if (state is AuthAuthenticated) {
-              return HomeScreen();
-            } else {
-              return LoginScreen();
-            }
-          },
-        ),
+        home: SplashScreen(),
         routes: {
           '/login': (context) => LoginScreen(),
           '/home': (context) => HomeScreen(),

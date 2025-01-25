@@ -27,10 +27,8 @@ class _SignUpState extends State<SignUp> {
 
   Future<void> _savedUserData() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString("Name", fullName.text);
     await prefs.setString("Email", email.text);
     await prefs.setString("Password", password.text);
-    await prefs.setString("confirmPassword", confirmPassword.text);
     if (phoneNumber.text.isNotEmpty) {
       await prefs.setInt("Phone", int.parse(phoneNumber.text));
     } else {
@@ -96,10 +94,6 @@ class _SignUpState extends State<SignUp> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _savedUserData();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                        );
                       }
                     },
                     title: 'Sign UP',

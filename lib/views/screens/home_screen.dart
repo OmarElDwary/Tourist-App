@@ -18,8 +18,11 @@ class HomeScreen extends StatelessWidget {
             MaterialPageRoute(builder: (context) => LoginScreen()),
           );
         }
-      },
-      child: Scaffold(
+      }, child: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+      if (state is AuthLoading) {
+        return Center(child: CircularProgressIndicator());
+      }
+      return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text('Home'),
@@ -33,7 +36,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         body: Column(),
-      ),
-    );
+      );
+    }));
   }
 }
