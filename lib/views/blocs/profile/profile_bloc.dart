@@ -21,21 +21,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       final name = prefs.getString('Name');
       final email = prefs.getString('Email');
 
-      //if (userData != null) {
-      //final List<dynamic> userDataList = json.decode(userData);
-      //final userDataMap = json.decode(userData) as Map<String, dynamic>;
-      //final userDataMap = userDataList[0];
-
       emit(ProfileLoaded(
         name: name ?? '',
         email: email ?? '',
         avatarUrl: "assets/images/no_image.png",
       ));
-      /*
-      } else {
-        emit(ProfileError('Failed to load profile: User data not found'));
-      }
-      */
     } catch (e) {
       emit(ProfileError('Failed to load profile: ${e.toString()}'));
     }
@@ -48,13 +38,15 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('Name', event.name);
       await prefs.setString('Email', event.email);
-      final updatedName = prefs.getString('Name') ?? '';
-      final updatedEmail = prefs.getString('Email') ?? '';
-      //   emit(ProfileUpdated(     name: updatedName, email: updatedEmail, avatarUrl: event.avatarUrl));
 
+      emit(ProfileUpdated(
+        name: event.name,
+        email: event.email,
+        avatarUrl: event.avatarUrl,
+      ));
       emit(ProfileLoaded(
-        name: updatedName,
-        email: updatedEmail,
+        name: event.name,
+        email: event.email,
         avatarUrl: event.avatarUrl,
       ));
     } catch (e) {

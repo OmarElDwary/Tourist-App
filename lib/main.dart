@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:tourist_app/services/user_services.dart';
 import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_state.dart';
+import 'package:tourist_app/views/blocs/profile/profile_bloc.dart';
+import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/screens/home_screen.dart';
 import 'package:tourist_app/views/screens/login_screen.dart';
 import 'package:tourist_app/views/screens/tabs_screen.dart';
@@ -24,6 +26,10 @@ class MyApp extends StatelessWidget {
         ),
         Provider(
           create: (context) => UserService(),
+        ),
+        BlocProvider(
+          create: (context) => ProfileBloc(context.read<UserService>())
+            ..add(LoadProfile()), // Load profile data when the app starts
         ),
       ],
       child: MaterialApp(

@@ -23,7 +23,14 @@ class ProfileScreen extends StatelessWidget {
             style: TextStyle(fontSize: 15),
           ),
         ),
-        body: BlocBuilder<ProfileBloc, ProfileState>(
+        body: BlocConsumer<ProfileBloc, ProfileState>(
+          listener: (context, state) {
+            if (state is ProfileUpdated) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("Profile Updated Successfully!")),
+              );
+            }
+          },
           builder: (context, state) {
             if (state is ProfileLoading) {
               return const Center(
@@ -52,23 +59,22 @@ class ProfileScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(6.0),
                       child: ElevatedButton.icon(
-                        onPressed: () {
-                          Navigator.push(
+                        onPressed: () async {
+                          // Navigate to EditProfilePage and wait for a result
+                          await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => BlocProvider(
-                                create: (context) => ProfileBloc(
-                                  Provider.of<UserService>(context,
-                                      listen: false),
-                                ),
+                              builder: (context) => BlocProvider.value(
+                                value: context.read<ProfileBloc>(),
                                 child: EditProfilePage(),
                               ),
                             ),
                           );
+                          context.read<ProfileBloc>().add(LoadProfile());
                         },
                         icon: Icon(Icons.edit),
                         label: Text(
-                          "edit Profile",
+                          "Edit Profile",
                           style: TextStyle(color: Colors.black),
                         ),
                         style: ElevatedButton.styleFrom(
