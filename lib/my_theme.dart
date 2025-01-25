@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MyTheme {
-  static Color goldColor = Color(0xffD4AF37);
-  static Color nileBlue = Color(0xff1A5276);
-  static Color sandColor = Color(0xffD2B48C);
-  static Color papyrusColor = Color(0xffF0E68C);
-  static Color darkBrown = Color(0xff654321);
+  static Color lightBrown = Color(0xffD7B77A);
+  static Color mediumBrown = Color(0xffC69C6D);
+  static Color darkBrown = Color(0xff8B5A2B);
+  static Color veryDarkBrown = Color(0xff5B3A29);
+  static Color deepBrown = Color(0xff3C2A20);
+  static Color beige = Color(0xffF5F5DC);
   static Color whiteColor = Color(0xffffffff);
 
   static ThemeData createTheme({
@@ -44,19 +45,19 @@ class MyTheme {
 
   static ThemeData get lightTheme => createTheme(
         brightness: Brightness.light,
-        primaryColor: darkBrown,
-        scaffoldBackgroundColor: sandColor,
-        selectedItemColor: goldColor,
+        primaryColor: mediumBrown,
+        scaffoldBackgroundColor: beige,
+        selectedItemColor: lightBrown,
         unselectedItemColor: darkBrown,
         iconColor: darkBrown,
       );
 
   static ThemeData get darkTheme => createTheme(
         brightness: Brightness.dark,
-        primaryColor: nileBlue,
-        scaffoldBackgroundColor: darkBrown,
-        selectedItemColor: goldColor,
-        unselectedItemColor: papyrusColor,
-        iconColor: goldColor,
+        primaryColor: deepBrown,
+        scaffoldBackgroundColor: veryDarkBrown,
+        selectedItemColor: lightBrown,
+        unselectedItemColor: beige,
+        iconColor: lightBrown,
       );
 }
