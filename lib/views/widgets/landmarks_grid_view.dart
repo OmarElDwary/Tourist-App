@@ -1,6 +1,5 @@
-/*
-
 import 'package:flutter/material.dart';
+import 'package:tourist_app/models/landmark_model.dart';
 import 'package:tourist_app/views/widgets/landmark_card.dart';
 
 class LandmarksGridView extends StatelessWidget {
@@ -35,4 +34,3 @@ class LandmarksGridView extends StatelessWidget {
     );
   }
 }
-*/

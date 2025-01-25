@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tourist_app/generated/l10n.dart';
 import 'package:tourist_app/views/screens/landmarks_screen.dart';
+import 'package:tourist_app/views/screens/favorites_screen.dart';
 import 'package:tourist_app/views/screens/profile_screen.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -13,18 +14,24 @@ class TabsScreen extends StatefulWidget {
 class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
-    int selectedPageIndex = 4;
+    int selectedPageIndex = 0;
 
-    Widget activeScreen = ProfileScreen();
+    Widget activeScreen = LandmarksScreen(
+      landmarks: [],
+    );
     Widget activePage() {
       if (selectedPageIndex == 0) {
-        //activeScreen = LandmarksScreen();
+        activeScreen = LandmarksScreen(
+          landmarks: [],
+        );
       } else if (selectedPageIndex == 1) {
-        //activeScreen = FavoritesScreen();
+        activeScreen = FavoritesScreen(
+          favoriteLandmarks: [],
+        );
       } else if (selectedPageIndex == 2) {
         //activeScreen = GovernmentsScreen();
       } else {
-        //activeScreen = ProfilesScreen();
+        activeScreen = ProfileScreen();
       }
       return activeScreen;
     }

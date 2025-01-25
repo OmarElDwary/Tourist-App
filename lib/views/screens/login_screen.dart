@@ -4,14 +4,13 @@ import 'package:tourist_app/services/user_services.dart';
 import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_event.dart';
 import 'package:tourist_app/views/blocs/auth/auth_state.dart';
-import 'package:tourist_app/views/screens/home_screen.dart';
 import 'package:tourist_app/views/screens/profile_screen.dart';
 import 'package:tourist_app/views/screens/signUp_screen.dart';
 import 'package:tourist_app/views/widgets/backgroundImage.dart';
-import 'package:tourist_app/views/widgets/buttons/CustomButton.dart';
+import 'package:tourist_app/views/widgets/CustomButton.dart';
 import 'package:tourist_app/views/widgets/loginFooter.dart';
 import 'package:tourist_app/views/widgets/loginForm.dart';
-import 'package:tourist_app/views/widgets/loginTitle.dart';
+import 'package:tourist_app/views/widgets/login_title.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

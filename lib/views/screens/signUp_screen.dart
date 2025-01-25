@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tourist_app/views/screens/home_screen.dart';
 import 'package:tourist_app/views/screens/login_screen.dart';
-import 'package:tourist_app/views/widgets/buttons/CustomButton.dart';
+import 'package:tourist_app/views/widgets/CustomButton.dart';
 import 'package:tourist_app/views/widgets/backgroundImage.dart';
-import 'package:tourist_app/views/widgets/loginTitle.dart';
+import 'package:tourist_app/views/widgets/login_title.dart';
 import 'package:tourist_app/views/widgets/signUpForm.dart';
 import 'package:tourist_app/views/widgets/signUpFooter.dart';
 

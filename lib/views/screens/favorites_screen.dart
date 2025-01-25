@@ -2,28 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:tourist_app/models/landmark_model.dart';
 import 'package:tourist_app/views/widgets/landmark_card.dart';
 
-class LandmarksListView extends StatelessWidget {
-  const LandmarksListView({
-    super.key,
-    required this.landmarks,
-  });
+class FavoritesScreen extends StatelessWidget {
+  const FavoritesScreen({super.key, required this.favoriteLandmarks});
 
-  final List<LandmarkModel> landmarks;
+  final List<LandmarkModel> favoriteLandmarks;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.3,
-      child: ListView.builder(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("S.of(context).favorites"),
+        centerTitle: true,
+      ),
+      body: ListView.builder(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
-        itemCount: landmarks.length,
+        itemCount: favoriteLandmarks.length,
         itemBuilder: (ctx, index) {
-          var landmark = landmarks[index];
+          var favoriteLandmark = favoriteLandmarks[index];
           return Padding(
             padding: const EdgeInsets.all(5.0),
             child: LandmarkCard(
-              landMarkModel: landmark,
+              landMarkModel: favoriteLandmark,
             ),
           );
         },

@@ -6,7 +6,6 @@ import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_state.dart';
 import 'package:tourist_app/views/blocs/profile/profile_bloc.dart';
 import 'package:tourist_app/views/blocs/profile/profile_event.dart';
-import 'package:tourist_app/views/screens/home_screen.dart';
 import 'package:tourist_app/views/screens/login_screen.dart';
 import 'package:tourist_app/views/screens/tabs_screen.dart';
 
@@ -28,13 +27,12 @@ class MyApp extends StatelessWidget {
           create: (context) => UserService(),
         ),
         BlocProvider(
-          create: (context) => ProfileBloc(context.read<UserService>())
-            ..add(LoadProfile()), // Load profile data when the app starts
+          create: (context) =>
+              ProfileBloc(context.read<UserService>())..add(LoadProfile()),
         ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Tourist App',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.brown),
           useMaterial3: true,
@@ -46,7 +44,7 @@ class MyApp extends StatelessWidget {
         home: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) {
             if (state is AuthAuthenticated) {
-              return HomeScreen();
+              return TabsScreen();
             } else {
               return LoginScreen();
             }
