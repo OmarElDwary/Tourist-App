@@ -4,9 +4,10 @@ import 'package:tourist_app/views/screens/home_screen.dart';
 import 'package:tourist_app/views/screens/login_screen.dart';
 import 'package:tourist_app/views/widgets/buttons/CustomButton.dart';
 import 'package:tourist_app/views/widgets/backgroundImage.dart';
-import 'package:tourist_app/views/widgets/loginTitle.dart';
 import 'package:tourist_app/views/widgets/signUpForm.dart';
 import 'package:tourist_app/views/widgets/signUpFooter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -33,13 +34,16 @@ class _SignUpState extends State<SignUp> {
       await prefs.setInt("Phone", int.parse(phoneNumber.text));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Phone number is empty!')),
+        SnackBar(
+            content: Text(AppLocalizations.of(context)!.phoneNumberIsEmpty)),
       );
       return;
     }
 
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('User data saved successfully!')),
+      SnackBar(
+          content:
+          Text(AppLocalizations.of(context)!.userDataSavedSuccessfully)),
     );
     Navigator.pushReplacement(
       context,
@@ -75,7 +79,6 @@ class _SignUpState extends State<SignUp> {
               child: ListView(
                 children: [
                   SizedBox(height: screenHeight * 0.09),
-                  CustomTitle(title: "Sign Up"),
                   SizedBox(height: screenHeight * 0.05),
                   SignUpForm(
                     formKey: _formKey,
@@ -95,8 +98,7 @@ class _SignUpState extends State<SignUp> {
                       if (_formKey.currentState!.validate()) {
                         _savedUserData();
                       }
-                    },
-                    title: 'Sign UP',
+                    }, title: AppLocalizations.of(context)!.signUP,
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   SignUpFooter(

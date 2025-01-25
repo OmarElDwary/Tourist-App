@@ -4,6 +4,8 @@ import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_event.dart';
 import 'package:tourist_app/views/blocs/auth/auth_state.dart';
 import 'package:tourist_app/views/screens/login_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tourist_app/views/screens/settings_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -18,14 +20,11 @@ class HomeScreen extends StatelessWidget {
             MaterialPageRoute(builder: (context) => LoginScreen()),
           );
         }
-      }, child: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-      if (state is AuthLoading) {
-        return Center(child: CircularProgressIndicator());
-      }
-      return Scaffold(
+      },
+      child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text('Home'),
+          title: Text(AppLocalizations.of(context)!.home),
           actions: [
             IconButton(
               icon: Icon(Icons.logout),
@@ -33,10 +32,19 @@ class HomeScreen extends StatelessWidget {
                 context.read<AuthBloc>().add(LogoutRequested());
               },
             ),
+            IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SettingsScreen(),
+                    ));
+              },
+            )
           ],
         ),
         body: Column(),
-      );
-    }));
+      ));
   }
 }

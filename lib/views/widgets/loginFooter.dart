@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginFooter extends StatelessWidget {
   final VoidCallback onSignUpPressed;
@@ -10,7 +11,7 @@ class LoginFooter extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("New Here?",
+        Text(AppLocalizations.of(context)!.new_here,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: MediaQuery.of(context).size.width * 0.045,
@@ -18,7 +19,7 @@ class LoginFooter extends StatelessWidget {
         TextButton(
           onPressed: onSignUpPressed,
           child: Text(
-            "Sign UP",
+            AppLocalizations.of(context)!.sign_up,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,

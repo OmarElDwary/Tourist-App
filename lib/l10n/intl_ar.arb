@@ -1,4 +1,5 @@
 {
+  "@@locale": "ar",
   "addedToFavorites": "تمت الإضافة إلى المفضلة",
   "removedFromFavorites": "تمت الإزالة من المفضلة",
   "home": "الرئيسية",
@@ -57,5 +58,12 @@
   "profile_details": "الملف الشخصي",
   "save": "حفظ",
   "edit_profile": "تعديل الملف الشخصي",
-  "continueAsGuest": "استمر كضيف"
+  "continueAsGuest": "استمر كضيف",
+  "settings": "الاعدادات",
+  "theme": "الثيم",
+  "lightTheme": "الثيم الفاتح",
+  "darkTheme": "الثيم الداكن",
+  "language": "اللغة",
+  "userDataSavedSuccessfully": "تم حفظ بيانات المستخدم بنجاح!",
+  "phoneNumberIsEmpty": "رقم الهاتف فارغ!"
 }

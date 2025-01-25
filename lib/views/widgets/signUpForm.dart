@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tourist_app/views/widgets/customTextField.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
@@ -35,13 +36,13 @@ class SignUpForm extends StatelessWidget {
         children: [
           CustomTextFormField(
             prefixIcon: Icon(Icons.person),
-            label: "Full Name",
+            label: AppLocalizations.of(context)!.fullName,
             controller: fullNameController,
             validator: (value) {
               if (value != null && value.isEmpty) {
-                return "Please enter your full name";
+                return AppLocalizations.of(context)!.enterName;
               } else if (!isFirstCharacter(value!)) {
-                return "First character should be a letter";
+                return AppLocalizations.of(context)!.firstCapital;
               }
               return null;
             },
@@ -49,13 +50,13 @@ class SignUpForm extends StatelessWidget {
           SizedBox(height: 20),
           CustomTextFormField(
             prefixIcon: Icon(Icons.email),
-            label: "Email",
+            label: AppLocalizations.of(context)!.email,
             controller: emailController,
             validator: (value) {
               if (value != null && value.isEmpty) {
-                return "Please enter your email";
+                return AppLocalizations.of(context)!.enterEmail;
               } else if (!value!.contains('@')) {
-                return "Please enter a valid email address";
+                return AppLocalizations.of(context)!.validEmail;
               }
               return null;
             },
@@ -63,13 +64,13 @@ class SignUpForm extends StatelessWidget {
           SizedBox(height: 20),
           CustomTextFormField(
             prefixIcon: Icon(Icons.lock),
-            label: "Password",
+            label: AppLocalizations.of(context)!.password,
             controller: passwordController,
             validator: (value) {
               if (value != null && value.isEmpty) {
-                return "Please enter your password";
+                return AppLocalizations.of(context)!.enterPassword;
               } else if (value!.length < 6) {
-                return "Password should be at least 6 characters long";
+                return AppLocalizations.of(context)!.validPassword;
               }
               return null;
             },
@@ -83,13 +84,13 @@ class SignUpForm extends StatelessWidget {
           SizedBox(height: 20),
           CustomTextFormField(
             prefixIcon: Icon(Icons.lock),
-            label: "Confirm Password",
+            label: AppLocalizations.of(context)!.confirmPassword,
             controller: confirmPasswordController,
             validator: (value) {
               if (value != null && value.isEmpty) {
-                return "Please enter your password";
+                return AppLocalizations.of(context)!.enterConfirmPassword;
               } else if (!isEqual(value!, passwordController.text)) {
-                return "Passwords do not match";
+                return AppLocalizations.of(context)!.passwordsMatch;
               }
               return null;
             },
@@ -102,7 +103,7 @@ class SignUpForm extends StatelessWidget {
           ),
           SizedBox(height: 20),
           CustomTextFormField(
-            label: "Phone Number",
+            label: AppLocalizations.of(context)!.phone,
             controller: phoneNumberController,
             isPhoneNumber: true,
           ),

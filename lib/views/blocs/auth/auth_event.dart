@@ -10,9 +10,3 @@ class LoginRequested extends AuthEvent {
 class LogoutRequested extends AuthEvent {}
 
 class CheckAuthStatus extends AuthEvent {}
-// class SignUpRequested extends AuthEvent {
-//   final String email;
-//   final String password;
-//
-//   SignUpRequested(this.email, this.password);
-// }

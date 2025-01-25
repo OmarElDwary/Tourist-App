@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tourist_app/views/widgets/customTextField.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginForm extends StatefulWidget {
   final TextEditingController emailController;
@@ -31,7 +32,7 @@ class _LoginFormState extends State<LoginForm> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             CustomTextFormField(
-              label: "Email",
+              label: AppLocalizations.of(context)!.email,
               controller: widget.emailController,
               keyboardType: TextInputType.emailAddress,
               prefixIcon: Icon(
@@ -43,14 +44,14 @@ class _LoginFormState extends State<LoginForm> {
                 if (text == null ||
                     text.trim().isEmpty ||
                     !text.contains('@')) {
-                  return "Please Enter Email";
+                  return AppLocalizations.of(context)!.please_enter_email;
                 }
                 return null;
               },
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             CustomTextFormField(
-              label: "Password",
+              label: AppLocalizations.of(context)!.password,
               controller: widget.passwordController,
               obscureText: widget.hidePassword,
               prefixIcon: Icon(
@@ -68,10 +69,11 @@ class _LoginFormState extends State<LoginForm> {
               ),
               validator: (text) {
                 if (text == null || text.trim().isEmpty) {
-                  return "Please enter your password";
+                  return AppLocalizations.of(context)!.please_enter_password;
                 }
                 if (text.length < 6) {
-                  return "Password should be at least 6 characters long";
+                  return AppLocalizations.of(context)!
+                      .password_must_be_at_least_6_chars;
                 }
                 return null;
               },
