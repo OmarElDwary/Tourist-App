@@ -15,12 +15,14 @@ class FavoriteLandmarksBloc
         ? (state as FavoriteLandmarksUpdated).favoriteLandmarks
         : <LandmarkModel>[];
 
-    final isExisting = currentState.contains(event.landmark);
+    final favoriteSet = currentState.toSet();
+    final isExisting = favoriteSet.contains(event.landmark);
 
-    final updatedFavorites = isExisting
-        ? currentState.where((land) => land.id != event.landmark.id).toList()
-        : [...currentState, event.landmark];
+    if (isExisting) {
+      favoriteSet.remove(event.landmark);
+      favoriteSet.add(event.landmark);
+    }
 
-    emit(FavoriteLandmarksUpdated(updatedFavorites));
+    emit(FavoriteLandmarksUpdated(favoriteSet.toList()));
   }
 }

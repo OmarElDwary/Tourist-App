@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tourist_app/models/landmark_model.dart';
+import 'package:tourist_app/views/blocs/favorite/favorite_bloc.dart';
+import 'package:tourist_app/views/blocs/favorite/favorite_state.dart';
 import 'package:tourist_app/views/widgets/landmark_card.dart';
 
 class LandmarksGridView extends StatelessWidget {
@@ -23,11 +26,20 @@ class LandmarksGridView extends StatelessWidget {
         itemCount: landmarks.length,
         itemBuilder: (ctx, index) {
           var landmark = landmarks[index];
-          return Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: LandmarkCard(
-              landMarkModel: landmark,
-            ),
+
+          return BlocBuilder<FavoriteLandmarksBloc, FavoriteLandmarksState>(
+            builder: (context, state) {
+              final isFavorite = state is FavoriteLandmarksUpdated &&
+                  state.favoriteLandmarks.contains(landmark);
+
+              return Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: LandmarkCard(
+                  landMarkModel: landmark,
+                  isFavorite: isFavorite, // Pass the isFavorite value here
+                ),
+              );
+            },
           );
         },
       ),

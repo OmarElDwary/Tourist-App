@@ -7,5 +7,6 @@ class FavoriteLandmarksInitial extends FavoriteLandmarksState {}
 class FavoriteLandmarksUpdated extends FavoriteLandmarksState {
   final List<LandmarkModel> favoriteLandmarks;
 
-  FavoriteLandmarksUpdated(this.favoriteLandmarks);
+  FavoriteLandmarksUpdated(List<LandmarkModel> favoriteLandmarks)
+      : favoriteLandmarks = List.unmodifiable(favoriteLandmarks);
 }
