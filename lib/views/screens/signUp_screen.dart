@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tourist_app/views/screens/home_screen.dart';
 import 'package:tourist_app/views/screens/login_screen.dart';
-import 'package:tourist_app/views/widgets/buttons/CustomButton.dart';
+import 'package:tourist_app/views/widgets/CustomButton.dart';
+import 'package:tourist_app/views/widgets/CustomTitle.dart';
 import 'package:tourist_app/views/widgets/backgroundImage.dart';
 import 'package:tourist_app/views/widgets/signUpForm.dart';
 import 'package:tourist_app/views/widgets/signUpFooter.dart';
@@ -28,8 +28,10 @@ class _SignUpState extends State<SignUp> {
 
   Future<void> _savedUserData() async {
     final prefs = await SharedPreferences.getInstance();
+    await prefs.setString("Name", fullName.text);
     await prefs.setString("Email", email.text);
     await prefs.setString("Password", password.text);
+    await prefs.setString("confirmPassword", confirmPassword.text);
     if (phoneNumber.text.isNotEmpty) {
       await prefs.setInt("Phone", int.parse(phoneNumber.text));
     } else {
@@ -79,6 +81,7 @@ class _SignUpState extends State<SignUp> {
               child: ListView(
                 children: [
                   SizedBox(height: screenHeight * 0.09),
+                  CustomTitle(title: "Sign Up"),
                   SizedBox(height: screenHeight * 0.05),
                   SignUpForm(
                     formKey: _formKey,
@@ -97,6 +100,7 @@ class _SignUpState extends State<SignUp> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         _savedUserData();
+
                       }
                     }, title: AppLocalizations.of(context)!.signUP,
                   ),

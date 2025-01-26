@@ -50,20 +50,20 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Added to Favorites`
+  /// `Added to favorites`
   String get addedToFavorites {
     return Intl.message(
-      'Added to Favorites',
+      'Added to favorites',
       name: 'addedToFavorites',
       desc: '',
       args: [],
     );
   }
 
-  /// `Removed from Favorites`
+  /// `Removed from favorites`
   String get removedFromFavorites {
     return Intl.message(
-      'Removed from Favorites',
+      'Removed from favorites',
       name: 'removedFromFavorites',
       desc: '',
       args: [],
@@ -90,10 +90,10 @@ class S {
     );
   }
 
-  /// `Government`
+  /// `Governorates`
   String get governments {
     return Intl.message(
-      'Government',
+      'Governorates',
       name: 'governments',
       desc: '',
       args: [],
@@ -135,136 +135,6 @@ class S {
     return Intl.message(
       'Popular Places',
       name: 'popularPlaces',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Full Name`
-  String get fullName {
-    return Intl.message(
-      'Full Name',
-      name: 'fullName',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Email`
-  String get email {
-    return Intl.message(
-      'Email',
-      name: 'email',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Confirm Password`
-  String get confirmPassword {
-    return Intl.message(
-      'Confirm Password',
-      name: 'confirmPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Phone Number`
-  String get phone {
-    return Intl.message(
-      'Phone Number',
-      name: 'phone',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sign UP`
-  String get signUP {
-    return Intl.message(
-      'Sign UP',
-      name: 'signUP',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter your full name`
-  String get enterName {
-    return Intl.message(
-      'Please enter your full name',
-      name: 'enterName',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter your email`
-  String get enterEmail {
-    return Intl.message(
-      'Please enter your email',
-      name: 'enterEmail',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter your password`
-  String get enterPassword {
-    return Intl.message(
-      'Please enter your password',
-      name: 'enterPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please confirm your password`
-  String get enterConfirmPassword {
-    return Intl.message(
-      'Please confirm your password',
-      name: 'enterConfirmPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `First character should be a letter`
-  String get firstCapital {
-    return Intl.message(
-      'First character should be a letter',
-      name: 'firstCapital',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter a valid email address`
-  String get validEmail {
-    return Intl.message(
-      'Please enter a valid email address',
-      name: 'validEmail',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Password should be at least 6 characters long`
-  String get validPassword {
-    return Intl.message(
-      'Password should be at least 6 characters long',
-      name: 'validPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Passwords do not match`
-  String get passwordsMatch {
-    return Intl.message(
-      'Passwords do not match',
-      name: 'passwordsMatch',
       desc: '',
       args: [],
     );
@@ -340,101 +210,221 @@ class S {
     );
   }
 
-  /// `Saint Catherine's Monastery`
+  /// `Saint Catherine Monastery`
   String get saint {
     return Intl.message(
-      'Saint Catherine\'s Monastery',
+      'Saint Catherine Monastery',
       name: 'saint',
       desc: '',
       args: [],
     );
   }
 
-  /// `The Sinai Peninsula in Egypt, located between Africa and Asia, is known for its beautiful landscape and long heritage. It is home to magnificent desert mountains, calm beaches, and hallowed religious locations. The area is popular for hiking, diving, and touring ancient monasteries.`
+  /// `The Sinai Peninsula in Egypt, located between Africa and Asia, is known for its natural beauty and ancient heritage. It features stunning desert mountains, tranquil beaches, and sacred religious sites. The area is famous for hiking, diving, and visiting ancient monasteries.`
   String get aboutSinai {
     return Intl.message(
-      'The Sinai Peninsula in Egypt, located between Africa and Asia, is known for its beautiful landscape and long heritage. It is home to magnificent desert mountains, calm beaches, and hallowed religious locations. The area is popular for hiking, diving, and touring ancient monasteries.',
+      'The Sinai Peninsula in Egypt, located between Africa and Asia, is known for its natural beauty and ancient heritage. It features stunning desert mountains, tranquil beaches, and sacred religious sites. The area is famous for hiking, diving, and visiting ancient monasteries.',
       name: 'aboutSinai',
       desc: '',
       args: [],
     );
   }
 
-  /// `Alexandria, Egypt’s second-largest city, is a Mediterranean gem blending history and modernity. Founded by Alexander the Great, it was once the center of knowledge and culture in the ancient world.`
+  /// `Alexandria, Egypt's second-largest city, is a Mediterranean gem where history and modernity blend. Founded by Alexander the Great, it was a center of knowledge and culture in the ancient world.`
   String get aboutAlex {
     return Intl.message(
-      'Alexandria, Egypt’s second-largest city, is a Mediterranean gem blending history and modernity. Founded by Alexander the Great, it was once the center of knowledge and culture in the ancient world.',
+      'Alexandria, Egypt\'s second-largest city, is a Mediterranean gem where history and modernity blend. Founded by Alexander the Great, it was a center of knowledge and culture in the ancient world.',
       name: 'aboutAlex',
       desc: '',
       args: [],
     );
   }
 
-  /// `Luxor often called the biggest outdoor museum in the world. Its Eastern Bank, which is split by the Nile, represents life, while the West Bank is emblematic of the afterlife. Luxor, a centre of ancient Egyptian history, provides a singular combination of cultural experiences and historical marvels.`
+  /// `Luxor is known as the 'world's greatest open-air museum.' The east bank of the Nile represents life, while the west bank symbolizes the afterlife. Luxor is a hub of ancient Egyptian history and offers a unique blend of cultural experiences and historical wonders.`
   String get aboutLuxor {
     return Intl.message(
-      'Luxor often called the biggest outdoor museum in the world. Its Eastern Bank, which is split by the Nile, represents life, while the West Bank is emblematic of the afterlife. Luxor, a centre of ancient Egyptian history, provides a singular combination of cultural experiences and historical marvels.',
+      'Luxor is known as the \'world\'s greatest open-air museum.\' The east bank of the Nile represents life, while the west bank symbolizes the afterlife. Luxor is a hub of ancient Egyptian history and offers a unique blend of cultural experiences and historical wonders.',
       name: 'aboutLuxor',
       desc: '',
       args: [],
     );
   }
 
-  /// `Alexandria Library: A modern revival of the ancient Library of Alexandria, it serves as a cultural hub with millions of books, art exhibits, and planetarium shows.`
+  /// `Library of Alexandria: A modern revival of the ancient library, it serves as a cultural center housing millions of books, art exhibitions, and planetarium shows.`
   String get alexLibrary {
     return Intl.message(
-      'Alexandria Library: A modern revival of the ancient Library of Alexandria, it serves as a cultural hub with millions of books, art exhibits, and planetarium shows.',
+      'Library of Alexandria: A modern revival of the ancient library, it serves as a cultural center housing millions of books, art exhibitions, and planetarium shows.',
       name: 'alexLibrary',
       desc: '',
       args: [],
     );
   }
 
-  /// `Citadel of Qaitbay: A 15th-century fortress built on the ruins of the ancient Lighthouse of Alexandria, offering stunning sea views and a glimpse into Alexandria’s defensive history.`
+  /// `Qaitbay Citadel: A 15th-century fortress built on the ruins of the ancient Lighthouse of Alexandria, offering stunning sea views and a glimpse into Alexandria's defensive history.`
   String get qaitbay {
     return Intl.message(
-      'Citadel of Qaitbay: A 15th-century fortress built on the ruins of the ancient Lighthouse of Alexandria, offering stunning sea views and a glimpse into Alexandria’s defensive history.',
+      'Qaitbay Citadel: A 15th-century fortress built on the ruins of the ancient Lighthouse of Alexandria, offering stunning sea views and a glimpse into Alexandria\'s defensive history.',
       name: 'qaitbay',
       desc: '',
       args: [],
     );
   }
 
-  /// `Mount Sinai is a holy location in many religions  where Moses is said to have received the Ten Commandments. Beautiful views may be seen from the summit, particularly at dawn.`
+  /// `Mount Sinai: A sacred site in many religions, believed to be where Moses received the Ten Commandments. The summit offers breathtaking views, especially at sunrise.`
   String get mountSinai {
     return Intl.message(
-      'Mount Sinai is a holy location in many religions  where Moses is said to have received the Ten Commandments. Beautiful views may be seen from the summit, particularly at dawn.',
+      'Mount Sinai: A sacred site in many religions, believed to be where Moses received the Ten Commandments. The summit offers breathtaking views, especially at sunrise.',
       name: 'mountSinai',
       desc: '',
       args: [],
     );
   }
 
-  /// `Saint Catherine's Monastery i one of the oldest surviving Christian monasteries in the world,  is situated at the base of Mount Sinai. It contains old manuscripts and treasures.`
+  /// `Saint Catherine Monastery: One of the oldest Christian monasteries in the world, located at the foot of Mount Sinai. It houses ancient manuscripts and treasures.`
   String get saintCatherine {
     return Intl.message(
-      'Saint Catherine\'s Monastery i one of the oldest surviving Christian monasteries in the world,  is situated at the base of Mount Sinai. It contains old manuscripts and treasures.',
+      'Saint Catherine Monastery: One of the oldest Christian monasteries in the world, located at the foot of Mount Sinai. It houses ancient manuscripts and treasures.',
       name: 'saintCatherine',
       desc: '',
       args: [],
     );
   }
 
-  /// `Karnak Temple: a magnificent complex of buildings such as temples, palaces, and obelisks celebrating the Theban gods that shows the artistic and architectural ability of the ancient Egyptians.`
+  /// `Karnak Temple: A magnificent complex featuring structures like temples, palaces, and obelisks dedicated to the Theban gods, showcasing the artistic and architectural prowess of ancient Egyptians.`
   String get karnak {
     return Intl.message(
-      'Karnak Temple: a magnificent complex of buildings such as temples, palaces, and obelisks celebrating the Theban gods that shows the artistic and architectural ability of the ancient Egyptians.',
+      'Karnak Temple: A magnificent complex featuring structures like temples, palaces, and obelisks dedicated to the Theban gods, showcasing the artistic and architectural prowess of ancient Egyptians.',
       name: 'karnak',
       desc: '',
       args: [],
     );
   }
 
-  /// `Valley of the Kings: A royal burial site with over 60 tombs, including Tutankhamun's, adorned with intricate hieroglyphs and stunning wall paintings.`
-  String get vallleyOfKings {
+  /// `Valley of the Kings: A royal burial site with over 60 tombs, including that of Tutankhamun, adorned with hieroglyphic inscriptions and stunning wall paintings.`
+  String get valleyOfKings {
     return Intl.message(
-      'Valley of the Kings: A royal burial site with over 60 tombs, including Tutankhamun\'s, adorned with intricate hieroglyphs and stunning wall paintings.',
-      name: 'vallleyOfKings',
+      'Valley of the Kings: A royal burial site with over 60 tombs, including that of Tutankhamun, adorned with hieroglyphic inscriptions and stunning wall paintings.',
+      name: 'valleyOfKings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full Name`
+  String get fullName {
+    return Intl.message(
+      'Full Name',
+      name: 'fullName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get phone {
+    return Intl.message(
+      'Phone Number',
+      name: 'phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Up`
+  String get signUP {
+    return Intl.message(
+      'Sign Up',
+      name: 'signUP',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your full name`
+  String get enterName {
+    return Intl.message(
+      'Please enter your full name',
+      name: 'enterName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your email`
+  String get enterEmail {
+    return Intl.message(
+      'Please enter your email',
+      name: 'enterEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your password`
+  String get enterPassword {
+    return Intl.message(
+      'Please enter your password',
+      name: 'enterPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please confirm your password`
+  String get enterConfirmPassword {
+    return Intl.message(
+      'Please confirm your password',
+      name: 'enterConfirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First letter must be capitalized`
+  String get firstCapital {
+    return Intl.message(
+      'First letter must be capitalized',
+      name: 'firstCapital',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email address`
+  String get validEmail {
+    return Intl.message(
+      'Please enter a valid email address',
+      name: 'validEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 6 characters`
+  String get validPassword {
+    return Intl.message(
+      'Password must be at least 6 characters',
+      name: 'validPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords do not match`
+  String get passwordsMatch {
+    return Intl.message(
+      'Passwords do not match',
+      name: 'passwordsMatch',
       desc: '',
       args: [],
     );
@@ -460,10 +450,10 @@ class S {
     );
   }
 
-  /// `New Here?`
+  /// `New here?`
   String get new_here {
     return Intl.message(
-      'New Here?',
+      'New here?',
       name: 'new_here',
       desc: '',
       args: [],
@@ -490,10 +480,20 @@ class S {
     );
   }
 
-  /// `Please Enter Email`
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your email`
   String get please_enter_email {
     return Intl.message(
-      'Please Enter Email',
+      'Please enter your email',
       name: 'please_enter_email',
       desc: '',
       args: [],
@@ -510,20 +510,20 @@ class S {
     );
   }
 
-  /// `Please Enter Password`
+  /// `Please enter your password`
   String get please_enter_password {
     return Intl.message(
-      'Please Enter Password',
+      'Please enter your password',
       name: 'please_enter_password',
       desc: '',
       args: [],
     );
   }
 
-  /// `Password must be at least 6 chars.`
+  /// `Password must be at least 6 characters.`
   String get password_must_be_at_least_6_chars {
     return Intl.message(
-      'Password must be at least 6 chars.',
+      'Password must be at least 6 characters.',
       name: 'password_must_be_at_least_6_chars',
       desc: '',
       args: [],
@@ -560,20 +560,20 @@ class S {
     );
   }
 
-  /// `Login Successful`
+  /// `Login successful`
   String get login_successful {
     return Intl.message(
-      'Login Successful',
+      'Login successful',
       name: 'login_successful',
       desc: '',
       args: [],
     );
   }
 
-  /// `Already have an account ?`
+  /// `Already have an account?`
   String get alreadyHaveAccount {
     return Intl.message(
-      'Already have an account ?',
+      'Already have an account?',
       name: 'alreadyHaveAccount',
       desc: '',
       args: [],
@@ -697,6 +697,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ar'),
     ];
   }
 
