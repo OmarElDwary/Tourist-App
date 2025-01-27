@@ -6,13 +6,13 @@ class LandmarksService {
 
   final Dio dio;
   final String baseUrl =
-      'https://my-json-server.typicode.com/OmarElDwary/tourist-db/users';
+      'https://my-json-server.typicode.com/eldaaww/tourist-landmarks/landmarks';
 
   Future<List<LandmarkModel>> fetchLandmarks() async {
     try {
       Response response = await dio.get(baseUrl);
       if (response.statusCode == 200 && response.data != null) {
-        List<dynamic> landmarksData = response.data['landmarks'];
+        List<dynamic> landmarksData = response.data;
         return landmarksData.map((landmarkData) {
           return LandmarkModel.fromJson(landmarkData);
         }).toList();

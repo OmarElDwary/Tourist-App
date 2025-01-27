@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tourist_app/views/screens/landmarks_screen.dart';
-import 'package:tourist_app/views/screens/profile_screen.dart';
+// import 'package:tourist_app/views/screens/landmarks_screen.dart';
+import 'package:tourist_app/views/screens/tabs_screen.dart';
 import 'package:tourist_app/views/widgets/splash_background.dart';
 import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_event.dart';
 import 'package:tourist_app/views/blocs/auth/auth_state.dart';
-import 'package:tourist_app/views/screens/home_screen.dart';
 import 'package:tourist_app/views/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -33,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => ProfileScreen(),
+                builder: (context) => TabsScreen(),
               ),
             );
           } else if (state is AuthUnauthenticated) {
