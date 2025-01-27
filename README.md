@@ -18,7 +18,7 @@ to enhance the tourism experience.
     - Input fields: Email, Password.
     - Validates user credentials and redirects to the Home Page upon successful login.
 
-### 4. Profile Page
+### 2. Profile Page
 
 - Displays user information, including:
     - Full Name
@@ -27,11 +27,11 @@ to enhance the tourism experience.
     - Phone Number
     - Password (hashed for security).
 
-### 8. Localization
+### 3. Localization
 
 - Supports both Arabic (Ar) and English (En).
 
-### 9. Theme Customization
+### 4. Theme Customization
 
 - Toggle between light and dark themes using ThemeBloc.
 
