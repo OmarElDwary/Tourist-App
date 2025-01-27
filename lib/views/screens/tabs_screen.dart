@@ -5,6 +5,7 @@ import 'package:tourist_app/generated/l10n.dart';
 import 'package:tourist_app/services/landmark_service.dart';
 import 'package:tourist_app/views/blocs/landmarks/landmarks_bloc.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_bloc.dart';
+import 'package:tourist_app/views/screens/home_screen.dart';
 import 'package:tourist_app/views/screens/landmarks_screen.dart';
 import 'package:tourist_app/views/screens/favorites_screen.dart';
 import 'package:tourist_app/views/screens/profile_screen.dart';
@@ -23,13 +24,15 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget _buildActiveScreen() {
     switch (selectedPageIndex) {
       case 0:
-        return LandmarksScreen();
+        return HomeScreen();
       case 1:
         return FavoritesScreen();
       case 2:
+        return LandmarksScreen();
+      case 3:
         return ProfileScreen();
       default:
-        return ProfileScreen();
+        return HomeScreen();
     }
   }
 
