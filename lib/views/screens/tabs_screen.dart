@@ -27,7 +27,7 @@ class _TabsScreenState extends State<TabsScreen> {
         return LandmarksScreen();
       case 1:
         return FavoritesScreen();
-      case 3:
+      case 2:
         return ProfileScreen();
       default:
         return LandmarksScreen();
