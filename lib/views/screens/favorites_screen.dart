@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tourist_app/models/landmark_model.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_bloc.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_state.dart';
 import 'package:tourist_app/views/widgets/landmark_card.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
@@ -12,7 +12,7 @@ class FavoritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("S.of(context).favorites"),
+        title: Text(AppLocalizations.of(context)!.favorites),
         centerTitle: true,
       ),
       body: BlocBuilder<FavoriteLandmarksBloc, FavoriteLandmarksState>(

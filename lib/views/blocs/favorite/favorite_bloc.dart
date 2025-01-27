@@ -11,18 +11,18 @@ class FavoriteLandmarksBloc
 
   void _onToggleLandmarkFavoriteStatus(ToggleLandmarkFavoriteStatus event,
       Emitter<FavoriteLandmarksState> emit) {
-    final currentState = state is FavoriteLandmarksUpdated
+    final currentFavorites = state is FavoriteLandmarksUpdated
         ? (state as FavoriteLandmarksUpdated).favoriteLandmarks
         : <LandmarkModel>[];
 
-    final favoriteSet = currentState.toSet();
-    final isExisting = favoriteSet.contains(event.landmark);
+    final updatedFavorites = List<LandmarkModel>.from(currentFavorites);
 
-    if (isExisting) {
-      favoriteSet.remove(event.landmark);
-      favoriteSet.add(event.landmark);
+    if (updatedFavorites.contains(event.landmark)) {
+      updatedFavorites.remove(event.landmark);
+    } else {
+      updatedFavorites.add(event.landmark);
     }
 
-    emit(FavoriteLandmarksUpdated(favoriteSet.toList()));
+    emit(FavoriteLandmarksUpdated(updatedFavorites.toList()));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:tourist_app/models/landmark_model.dart';
 
 class LandmarksService {
@@ -11,11 +12,15 @@ class LandmarksService {
   Future<List<LandmarkModel>> fetchLandmarks() async {
     try {
       Response response = await dio.get(baseUrl);
+
+      debugPrint('Response received: ${response.data}');
       if (response.statusCode == 200 && response.data != null) {
         List<dynamic> landmarksData = response.data;
-        return landmarksData.map((landmarkData) {
-          return LandmarkModel.fromJson(landmarkData);
-        }).toList();
+        final landmarksList = landmarksData
+            .map((landmarkData) => LandmarkModel.fromJson(landmarkData))
+            .toList();
+
+        return landmarksList;
       } else {
         throw Exception('Failed to load landmarks');
       }

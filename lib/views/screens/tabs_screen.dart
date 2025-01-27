@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tourist_app/generated/l10n.dart';
 import 'package:tourist_app/services/landmark_service.dart';
 import 'package:tourist_app/views/blocs/landmarks/landmarks_bloc.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_bloc.dart';
@@ -9,6 +8,7 @@ import 'package:tourist_app/views/screens/home_screen.dart';
 import 'package:tourist_app/views/screens/landmarks_screen.dart';
 import 'package:tourist_app/views/screens/favorites_screen.dart';
 import 'package:tourist_app/views/screens/profile_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TabsScreen extends StatefulWidget {
   TabsScreen({super.key});
@@ -24,15 +24,13 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget _buildActiveScreen() {
     switch (selectedPageIndex) {
       case 0:
-        return HomeScreen();
+        return LandmarksScreen();
       case 1:
         return FavoritesScreen();
-      case 2:
-        return LandmarksScreen();
       case 3:
         return ProfileScreen();
       default:
-        return HomeScreen();
+        return LandmarksScreen();
     }
   }
 
@@ -60,19 +58,15 @@ class _TabsScreenState extends State<TabsScreen> {
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: "S.of(context).home",
+              label: AppLocalizations.of(context)!.home,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.favorite),
-              label: "S.of(context).favorites",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.location_city),
-              label: "S.of(context).governments",
+              label: AppLocalizations.of(context)!.favorites,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: "S.of(context).profile",
+              label: AppLocalizations.of(context)!.profile,
             ),
           ],
         ),

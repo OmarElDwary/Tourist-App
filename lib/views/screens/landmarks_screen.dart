@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tourist_app/models/landmark_model.dart';
 import 'package:tourist_app/views/blocs/landmarks/landmarks_bloc.dart';
+import 'package:tourist_app/views/blocs/landmarks/landmarks_event.dart';
 import 'package:tourist_app/views/blocs/landmarks/landmarks_state.dart';
 import 'package:tourist_app/views/widgets/landmarks_grid_view.dart';
 import 'package:tourist_app/views/widgets/landmarks_list_view.dart';
@@ -17,6 +18,12 @@ class LandmarksScreen extends StatefulWidget {
 }
 
 class _LandmarksScreenState extends State<LandmarksScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<LandmarksBloc>().add(LoadLandmarks());
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LandmarksBloc, LandmarksState>(
@@ -35,6 +42,7 @@ class _LandmarksScreenState extends State<LandmarksScreen> {
             child: Scaffold(
               appBar: AppBar(
                 title: Text(AppLocalizations.of(context)!.landmarks),
+                automaticallyImplyLeading: false,
                 bottom: TabBar(
                   labelColor: Colors.white,
                   unselectedLabelColor: Colors.black,
