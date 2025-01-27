@@ -15,9 +15,8 @@ import 'package:tourist_app/views/cubits/changeLanguage/change_language_cubit.da
 class AppProviders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final dio = Dio(); // إنشاء مثيل من Dio
-    final landmarksService =
-        LandmarksService(dio: dio); // تهيئة LandmarksService
+    final dio = Dio();
+    final landmarksService = LandmarksService(dio: dio);
 
     return MultiProvider(
       providers: [
