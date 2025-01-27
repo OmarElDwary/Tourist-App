@@ -689,6 +689,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Landmarks`
+  String get landmarks {
+    return Intl.message(
+      'Landmarks',
+      name: 'landmarks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Suggested Landmarks`
+  String get suggestedLandmarks {
+    return Intl.message(
+      'Suggested Landmarks',
+      name: 'suggestedLandmarks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message(
+      'Retry',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile Updated Successfully!`
+  String get profileUpdatedSuccessfully {
+    return Intl.message(
+      'Profile Updated Successfully!',
+      name: 'profileUpdatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown state`
+  String get unknown_state {
+    return Intl.message(
+      'Unknown state',
+      name: 'unknown_state',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout Success`
+  String get logoutSuccessMessage {
+    return Intl.message(
+      'Logout Success',
+      name: 'logoutSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

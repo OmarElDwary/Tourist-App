@@ -68,11 +68,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid email or password"),
         "karnak": MessageLookupByLibrary.simpleMessage(
             "Karnak Temple: A magnificent complex featuring structures like temples, palaces, and obelisks dedicated to the Theban gods, showcasing the artistic and architectural prowess of ancient Egyptians."),
+        "landmarks": MessageLookupByLibrary.simpleMessage("Landmarks"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("Light Theme"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_successful":
             MessageLookupByLibrary.simpleMessage("Login successful"),
+        "logoutSuccessMessage":
+            MessageLookupByLibrary.simpleMessage("Logout Success"),
         "luxor": MessageLookupByLibrary.simpleMessage("Luxor"),
         "mount": MessageLookupByLibrary.simpleMessage("Mount Sinai"),
         "mountSinai": MessageLookupByLibrary.simpleMessage(
@@ -94,12 +97,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter your password"),
         "popularPlaces": MessageLookupByLibrary.simpleMessage("Popular Places"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "profileUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Profile Updated Successfully!"),
         "profile_details":
             MessageLookupByLibrary.simpleMessage("Profile Details"),
         "qaitbay": MessageLookupByLibrary.simpleMessage(
             "Qaitbay Citadel: A 15th-century fortress built on the ruins of the ancient Lighthouse of Alexandria, offering stunning sea views and a glimpse into Alexandria\'s defensive history."),
         "removedFromFavorites":
             MessageLookupByLibrary.simpleMessage("Removed from favorites"),
+        "retry": MessageLookupByLibrary.simpleMessage("Retry"),
         "saint":
             MessageLookupByLibrary.simpleMessage("Saint Catherine Monastery"),
         "saintCatherine": MessageLookupByLibrary.simpleMessage(
@@ -109,11 +115,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUP": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "sinai": MessageLookupByLibrary.simpleMessage("Sinai"),
+        "suggestedLandmarks":
+            MessageLookupByLibrary.simpleMessage("Suggested Landmarks"),
         "suggestedPlaces":
             MessageLookupByLibrary.simpleMessage("Suggested Places"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "tourist_guide_app":
             MessageLookupByLibrary.simpleMessage("Tourist Guide App"),
+        "unknown_state": MessageLookupByLibrary.simpleMessage("Unknown state"),
         "userDataSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "User data saved successfully!"),
         "validEmail": MessageLookupByLibrary.simpleMessage(

@@ -63,5 +63,11 @@
   "darkTheme": "Dark Theme",
   "language": "Language",
   "userDataSavedSuccessfully": "User data saved successfully!",
-  "phoneNumberIsEmpty": "Phone number is empty!"
+  "phoneNumberIsEmpty": "Phone number is empty!",
+  "landmarks": "Landmarks",
+  "suggestedLandmarks": "Suggested Landmarks",
+  "retry": "Retry",
+  "profileUpdatedSuccessfully": "Profile Updated Successfully!",
+  "unknown_state": "Unknown state",
+  "logoutSuccessMessage": "Logout Success"
 }

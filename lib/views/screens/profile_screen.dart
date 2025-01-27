@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:tourist_app/services/user_services.dart';
+import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
+import 'package:tourist_app/views/blocs/auth/auth_event.dart';
 import 'package:tourist_app/views/blocs/profile/profile_bloc.dart';
 import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/blocs/profile/profile_state.dart';
 import 'package:tourist_app/views/screens/edit_profile_screen.dart';
+import 'package:tourist_app/views/screens/login_screen.dart';
+import 'package:tourist_app/views/screens/settings_screen.dart';
 import 'package:tourist_app/views/widgets/list_tile.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -19,15 +24,48 @@ class ProfileScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "S.of(context).profile_details",
-            style: TextStyle(fontSize: 15),
+            AppLocalizations.of(context)!.profile_details,
+            style: TextStyle(fontSize: 20),
           ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () {
+                context.read<AuthBloc>().add(LogoutRequested());
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                        AppLocalizations.of(context)!.logoutSuccessMessage),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SettingsScreen(),
+                    ));
+              },
+            )
+          ],
         ),
         body: BlocConsumer<ProfileBloc, ProfileState>(
           listener: (context, state) {
             if (state is ProfileUpdated) {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("Profile Updated Successfully!")),
+                SnackBar(
+                    content: Text(AppLocalizations.of(context)!
+                        .profileUpdatedSuccessfully)),
               );
             }
           },
@@ -50,17 +88,20 @@ class ProfileScreen extends StatelessWidget {
                       backgroundImage:
                           const AssetImage('assets/images/no_image.png'),
                     ),
-                    const SizedBox(height: 8),
-                    listTileFunc("Full Name", state.name, Icon(Icons.person)),
-                    const SizedBox(height: 2),
-                    listTileFunc("Email", state.email, Icon(Icons.email)),
-                    const SizedBox(height: 2),
-                    listTileFunc("Password", "*******", Icon(Icons.password)),
+                    const SizedBox(height: 30),
+                    listTileFunc(AppLocalizations.of(context)!.fullName,
+                        state.name, Icon(Icons.person)),
+                    const SizedBox(height: 10),
+                    listTileFunc(AppLocalizations.of(context)!.email,
+                        state.email, Icon(Icons.email)),
+                    const SizedBox(height: 10),
+                    listTileFunc(AppLocalizations.of(context)!.password,
+                        "*******", Icon(Icons.password)),
+                    SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.all(6.0),
                       child: ElevatedButton.icon(
                         onPressed: () async {
-                          // Navigate to EditProfilePage and wait for a result
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -74,7 +115,7 @@ class ProfileScreen extends StatelessWidget {
                         },
                         icon: Icon(Icons.edit),
                         label: Text(
-                          "Edit Profile",
+                          AppLocalizations.of(context)!.edit_profile,
                           style: TextStyle(color: Colors.black),
                         ),
                         style: ElevatedButton.styleFrom(

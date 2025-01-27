@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tourist_app/views/blocs/profile/profile_bloc.dart';
 import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/blocs/profile/profile_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tourist_app/views/screens/profile_screen.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
@@ -29,13 +31,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit Profile"),
+        title: Text(AppLocalizations.of(context)!.edit_profile),
       ),
       body: BlocConsumer<ProfileBloc, ProfileState>(
         listener: (context, state) {
           if (state is ProfileUpdated) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("Profile Updated Successfully!")),
+              SnackBar(
+                  content: Text(AppLocalizations.of(context)!
+                      .profileUpdatedSuccessfully)),
             );
           } else if (state is ProfileError) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -59,6 +63,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     key: _formKey,
                     child: Column(
                       children: [
+                        SizedBox(height: 20),
                         TextFormField(
                           style: TextStyle(color: Colors.black),
                           enableInteractiveSelection: true,
@@ -66,7 +71,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           decoration: InputDecoration(
                             hintStyle: const TextStyle(color: Colors.black),
                             label: Text(
-                              "Full Name",
+                              AppLocalizations.of(context)!.fullName,
                               style: TextStyle(color: Colors.black),
                             ),
                             prefixIcon: Icon(Icons.person,
@@ -90,9 +95,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           controller: _fullNameController,
                           validator: (value) {
                             if (value != null && value.isEmpty) {
-                              return "Please enter your full name";
+                              return AppLocalizations.of(context)!.enterName;
                             } else if (!isFirstCharacter(value!)) {
-                              return "First character should be a letter";
+                              return AppLocalizations.of(context)!.firstCapital;
                             }
                             return null;
                           },
@@ -105,7 +110,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           decoration: InputDecoration(
                             hintStyle: const TextStyle(color: Colors.black),
                             label: Text(
-                              "Email",
+                              AppLocalizations.of(context)!.email,
                               style: TextStyle(color: Colors.black),
                             ),
                             prefixIcon: Icon(Icons.email,
@@ -129,9 +134,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           controller: _emailController,
                           validator: (value) {
                             if (value != null && value.isEmpty) {
-                              return "Please enter your email";
+                              return AppLocalizations.of(context)!.enterEmail;
                             } else if (!value!.contains('@')) {
-                              return "Please enter a valid email address";
+                              return AppLocalizations.of(context)!.validEmail;
                             }
                             return null;
                           },
@@ -139,6 +144,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       ],
                     ),
                   ),
+                  SizedBox(height: 40),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -148,6 +154,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               avatarUrl: "assets/images/no_image.png",
                             ));
                       }
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfileScreen(),
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size(150, 40),
@@ -156,7 +168,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       iconColor: const Color.fromARGB(255, 0, 0, 0),
                     ),
                     child: Text(
-                      "Save",
+                      AppLocalizations.of(context)!.save,
                       style: TextStyle(color: Colors.black),
                     ),
                   ),

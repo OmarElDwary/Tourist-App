@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tourist_app/views/screens/landmarks_screen.dart';
+import 'package:tourist_app/views/screens/profile_screen.dart';
 import 'package:tourist_app/views/widgets/splash_background.dart';
 import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_event.dart';
@@ -31,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => HomeScreen(),
+                builder: (context) => ProfileScreen(),
               ),
             );
           } else if (state is AuthUnauthenticated) {

@@ -38,11 +38,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "invalid_email_or_password": MessageLookupByLibrary.simpleMessage(
             "البريد الإلكتروني أو كلمة المرور غير صحيحة"),
+        "landmarks": MessageLookupByLibrary.simpleMessage("الأماكن"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("الثيم الفاتح"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "login_successful":
             MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),
+        "logoutSuccessMessage":
+            MessageLookupByLibrary.simpleMessage("تم تسجيل الخروج بنجاح"),
         "new_here": MessageLookupByLibrary.simpleMessage("جديد هنا؟"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "password_must_be_at_least_6_chars":
@@ -56,15 +59,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_enter_password":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال كلمة المرور"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+        "profileUpdatedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("تم تحديث البروفايل بنجاح!"),
         "profile_details": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "removedFromFavorites":
             MessageLookupByLibrary.simpleMessage("تمت الإزالة من المفضلة"),
+        "retry": MessageLookupByLibrary.simpleMessage("حاول مرة اخري"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "settings": MessageLookupByLibrary.simpleMessage("الاعدادات"),
         "sign_up": MessageLookupByLibrary.simpleMessage("انشاء حساب"),
+        "suggestedLandmarks":
+            MessageLookupByLibrary.simpleMessage("المعالم المقترحة"),
         "theme": MessageLookupByLibrary.simpleMessage("الثيم"),
         "tourist_guide_app":
             MessageLookupByLibrary.simpleMessage("تطبيق الدليل السياحي"),
+        "unknown_state": MessageLookupByLibrary.simpleMessage("غير معرف"),
         "userDataSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "تم حفظ بيانات المستخدم بنجاح!")
       };

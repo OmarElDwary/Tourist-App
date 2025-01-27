@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tourist_app/generated/l10n.dart';
 import 'package:tourist_app/models/landmark_model.dart';
 import 'package:tourist_app/views/blocs/landmarks/landmarks_bloc.dart';
 import 'package:tourist_app/views/blocs/landmarks/landmarks_state.dart';
 import 'package:tourist_app/views/widgets/landmarks_grid_view.dart';
 import 'package:tourist_app/views/widgets/landmarks_list_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LandmarksScreen extends StatefulWidget {
   const LandmarksScreen({
@@ -34,17 +34,17 @@ class _LandmarksScreenState extends State<LandmarksScreen> {
             length: tabs.length,
             child: Scaffold(
               appBar: AppBar(
-                title: Text(""),
+                title: Text(AppLocalizations.of(context)!.landmarks),
                 bottom: TabBar(
                   labelColor: Colors.white,
                   unselectedLabelColor: Colors.black,
                   indicatorColor: Colors.black,
                   tabs: [
                     Tab(
-                      text: "S.of(context).suggestedLandmarks",
+                      text: AppLocalizations.of(context)!.suggestedLandmarks,
                     ),
                     Tab(
-                      text: "S.of(context).popularLandmarks",
+                      text: AppLocalizations.of(context)!.popularPlaces,
                     ),
                   ],
                 ),
