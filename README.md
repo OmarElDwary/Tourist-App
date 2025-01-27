@@ -139,6 +139,8 @@ maintainability and scalability.
 
 ## File Structure
 
+```plaintext
+```
 lib
 ├── data
 ├── generated
@@ -158,8 +160,9 @@ lib
 │ └── widgets
 └── main.dar
 
+```
 ---
-
+```
 ## User Profile Management
 
 ### Features
