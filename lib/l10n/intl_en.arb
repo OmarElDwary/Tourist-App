@@ -1,7 +1,7 @@
 {
   "@@locale": "en",
-  "addedToFavorites": "Added to favorites",
-  "removedFromFavorites": "Removed from favorites",
+  "added_to_favorites": "Added to favorites",
+  "removed_from_favorites": "Removed from favorites",
   "home": "Home",
   "favorites": "Favorites",
   "governments": "Governorates",

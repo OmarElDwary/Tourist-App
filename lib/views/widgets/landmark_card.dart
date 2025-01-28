@@ -4,6 +4,7 @@ import 'package:tourist_app/generated/l10n.dart';
 import 'package:tourist_app/models/landmark_model.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_bloc.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_event.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LandmarkCard extends StatelessWidget {
   final LandmarkModel landMarkModel;
@@ -27,14 +28,14 @@ class LandmarkCard extends StatelessWidget {
             Expanded(
               child: Image.network(
                 landMarkModel.image,
-                fit: BoxFit.fitWidth,
+                width: MediaQuery.of(context).size.width * 8,
               ),
             ),
             const SizedBox(height: 10),
             Text(
               landMarkModel.name,
               style: const TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -58,8 +59,8 @@ class LandmarkCard extends StatelessWidget {
                   SnackBar(
                     content: Text(
                       isFavorite
-                          ? "S.of(context).removed_from_favorites"
-                          : "S.of(context).added_to_favorites",
+                          ? AppLocalizations.of(context)!.removed_from_favorites
+                          : AppLocalizations.of(context)!.added_to_favorites,
                     ),
                   ),
                 );

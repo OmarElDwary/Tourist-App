@@ -28,22 +28,18 @@ class FavoritesScreen extends StatelessWidget {
               itemBuilder: (ctx, index) {
                 var favoriteLandmark = favoriteLandmarks[index];
 
-                // Pass isFavorite parameter to LandmarkCard
                 return Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: LandmarkCard(
                     landMarkModel: favoriteLandmark,
-                    isFavorite:
-                        true, // Since these are the favorites, isFavorite is always true
+                    isFavorite: true,
                   ),
                 );
               },
             );
           } else if (state is FavoriteLandmarksInitial) {
-            // Show a loading indicator when there are no favorites
             return const Center(child: CircularProgressIndicator());
           } else {
-            // Handle any unexpected states, show an empty screen for now
             return const Center(child: Text("No favorites yet."));
           }
         },

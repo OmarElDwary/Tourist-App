@@ -23,6 +23,6 @@ class FavoriteLandmarksBloc
       updatedFavorites.add(event.landmark);
     }
 
-    emit(FavoriteLandmarksUpdated(updatedFavorites.toList()));
+    emit(FavoriteLandmarksUpdated(updatedFavorites));
   }
 }
