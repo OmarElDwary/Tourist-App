@@ -35,6 +35,10 @@ to enhance the tourism experience.
 
 - Toggle between light and dark themes using ThemeBloc.
 
+### 5. Landmarks/ Home Page
+
+- Shows landmarks or places and add them to favorites.
+
 ---
 
 ## State Management (Blocs)
@@ -50,8 +54,15 @@ The application employs flutter_bloc for efficient state management:
 - *ThemeBloc*:
     - States: ThemeLight, ThemeDark.
     - Events: ToggleTheme.
+- *PlacesBloc*:
+    - Events: LoadLandmarks.
+    - States: LandmarksLoading, LandmarksLoaded, LandmarksError.
 - *ChangeLanguageCubit*:
     - States: ChangeLanguageState.
+- *FavoritesBloc*:
+    - States: ChangeLanguageState.
+    - Events: FavoriteLandmarksInitial, FavoriteLandmarksUpdated.
+
 
 ---
 
