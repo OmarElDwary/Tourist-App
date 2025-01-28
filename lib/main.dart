@@ -7,8 +7,15 @@ import 'package:tourist_app/views/cubits/changeLanguage/change_language_cubit.da
 import 'package:tourist_app/views/cubits/changeLanguage/change_language_state.dart';
 import 'package:tourist_app/views/screens/splash_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(AppProviders());
 }
 
