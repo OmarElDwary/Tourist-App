@@ -22,7 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "addedToFavorites":
+        "added_to_favorites":
             MessageLookupByLibrary.simpleMessage("تمت الإضافة إلى المفضلة"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "continueAsGuest": MessageLookupByLibrary.simpleMessage("استمر كضيف"),
@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "landmarks": MessageLookupByLibrary.simpleMessage("الأماكن"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("الثيم الفاتح"),
+        "loading": MessageLookupByLibrary.simpleMessage("تحميل..."),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "login_successful":
             MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),
@@ -62,11 +63,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileUpdatedSuccessfully":
             MessageLookupByLibrary.simpleMessage("تم تحديث البروفايل بنجاح!"),
         "profile_details": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
-        "removedFromFavorites":
+        "removed_from_favorites":
             MessageLookupByLibrary.simpleMessage("تمت الإزالة من المفضلة"),
         "retry": MessageLookupByLibrary.simpleMessage("حاول مرة اخري"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "settings": MessageLookupByLibrary.simpleMessage("الاعدادات"),
+        "signUpSuccessful":
+            MessageLookupByLibrary.simpleMessage("تم تسجيل الحساب بنجاح!"),
         "sign_up": MessageLookupByLibrary.simpleMessage("انشاء حساب"),
         "suggestedLandmarks":
             MessageLookupByLibrary.simpleMessage("المعالم المقترحة"),

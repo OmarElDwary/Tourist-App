@@ -1,12 +1,17 @@
 abstract class AuthEvent {}
 
-class LoginRequested extends AuthEvent {
+class LoginButtonPressed extends AuthEvent {
   final String email;
   final String password;
 
-  LoginRequested(this.email, this.password);
+  LoginButtonPressed({required this.email, required this.password});
 }
 
-class LogoutRequested extends AuthEvent {}
+class SignUpButtonPressed extends AuthEvent {
+  final String email;
+  final String password;
 
-class CheckAuthStatus extends AuthEvent {}
+  SignUpButtonPressed({required this.email, required this.password});
+}
+
+class SignOutEvent extends AuthEvent {}

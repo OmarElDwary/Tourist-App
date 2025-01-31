@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tourist_app/services/user_services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_event.dart';
 import 'package:tourist_app/views/blocs/auth/auth_state.dart';
-import 'package:tourist_app/views/screens/signUp_screen.dart';
+import 'package:tourist_app/views/screens/signup_screen.dart';
 import 'package:tourist_app/views/screens/tabs_screen.dart';
-import 'package:tourist_app/views/widgets/backgroundImage.dart';
 import 'package:tourist_app/views/widgets/CustomButton.dart';
+import 'package:tourist_app/views/widgets/CustomTitle.dart';
+import 'package:tourist_app/views/widgets/backgroundImage.dart';
 import 'package:tourist_app/views/widgets/loginFooter.dart';
 import 'package:tourist_app/views/widgets/loginForm.dart';
-import 'package:tourist_app/views/widgets/CustomTitle.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -36,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     return BlocProvider(
-      create: (context) => AuthBloc(UserService()),
+      create: (context) => AuthBloc(),
       child: Scaffold(
         body: BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
@@ -91,9 +90,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               context.read<AuthBloc>().add(
-                                    LoginRequested(
-                                      _emailController.text,
-                                      _passwordController.text,
+                                    LoginButtonPressed(
+                                      email: _emailController.text,
+                                      password: _passwordController.text,
                                     ),
                                   );
                             }
@@ -108,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => SignUp(),
+                            builder: (context) => SignUpScreen(),
                           ),
                         );
                       },

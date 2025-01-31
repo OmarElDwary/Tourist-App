@@ -29,7 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Luxor is known as the \'world\'s greatest open-air museum.\' The east bank of the Nile represents life, while the west bank symbolizes the afterlife. Luxor is a hub of ancient Egyptian history and offers a unique blend of cultural experiences and historical wonders."),
         "aboutSinai": MessageLookupByLibrary.simpleMessage(
             "The Sinai Peninsula in Egypt, located between Africa and Asia, is known for its natural beauty and ancient heritage. It features stunning desert mountains, tranquil beaches, and sacred religious sites. The area is famous for hiking, diving, and visiting ancient monasteries."),
-        "addedToFavorites":
+        "added_to_favorites":
             MessageLookupByLibrary.simpleMessage("Added to favorites"),
         "alexLibrary": MessageLookupByLibrary.simpleMessage(
             "Library of Alexandria: A modern revival of the ancient library, it serves as a cultural center housing millions of books, art exhibitions, and planetarium shows."),
@@ -71,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "landmarks": MessageLookupByLibrary.simpleMessage("Landmarks"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "lightTheme": MessageLookupByLibrary.simpleMessage("Light Theme"),
+        "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_successful":
             MessageLookupByLibrary.simpleMessage("Login successful"),
@@ -103,7 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Profile Details"),
         "qaitbay": MessageLookupByLibrary.simpleMessage(
             "Qaitbay Citadel: A 15th-century fortress built on the ruins of the ancient Lighthouse of Alexandria, offering stunning sea views and a glimpse into Alexandria\'s defensive history."),
-        "removedFromFavorites":
+        "removed_from_favorites":
             MessageLookupByLibrary.simpleMessage("Removed from favorites"),
         "retry": MessageLookupByLibrary.simpleMessage("Retry"),
         "saint":
@@ -113,6 +114,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "signUP": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "signUpSuccessful":
+            MessageLookupByLibrary.simpleMessage("Sign-up Successful!"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "sinai": MessageLookupByLibrary.simpleMessage("Sinai"),
         "suggestedLandmarks":

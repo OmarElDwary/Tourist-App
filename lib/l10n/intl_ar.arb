@@ -52,5 +52,7 @@
   "retry": "حاول مرة اخري",
   "profileUpdatedSuccessfully": "تم تحديث البروفايل بنجاح!",
   "unknown_state": "غير معرف",
-  "logoutSuccessMessage": "تم تسجيل الخروج بنجاح"
+  "logoutSuccessMessage": "تم تسجيل الخروج بنجاح",
+  "loading": "تحميل...",
+  "signUpSuccessful": "تم تسجيل الحساب بنجاح!"
 }

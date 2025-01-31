@@ -21,7 +21,7 @@ class AppProviders extends StatelessWidget {
     return MultiProvider(
       providers: [
         BlocProvider(
-          create: (context) => AuthBloc(UserService()),
+          create: (context) => AuthBloc(),
         ),
         Provider(
           create: (context) => UserService(),

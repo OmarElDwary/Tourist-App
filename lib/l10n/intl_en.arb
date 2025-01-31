@@ -69,5 +69,7 @@
   "retry": "Retry",
   "profileUpdatedSuccessfully": "Profile Updated Successfully!",
   "unknown_state": "Unknown state",
-  "logoutSuccessMessage": "Logout Success"
+  "logoutSuccessMessage": "Logout Success",
+  "loading": "Loading...",
+  "signUpSuccessful": "Sign-up Successful!"
 }

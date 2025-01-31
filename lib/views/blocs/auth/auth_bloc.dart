@@ -1,65 +1,56 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tourist_app/services/user_services.dart';
 import 'package:tourist_app/views/blocs/auth/auth_event.dart';
 import 'package:tourist_app/views/blocs/auth/auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final UserService userService;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  AuthBloc(this.userService) : super(AuthInitial()) {
-    on<LoginRequested>(_onLoginRequested);
-    on<LogoutRequested>(_onLogoutRequested);
-    on<CheckAuthStatus>(_onCheckAuthStatus);
+  AuthBloc() : super(AuthInitial()) {
+    on<LoginButtonPressed>(_login);
+    on<SignUpButtonPressed>(_signUp);
+    on<SignOutEvent>(_signOut);
   }
 
-  Future<void> _onCheckAuthStatus(
-      CheckAuthStatus event, Emitter<AuthState> emit) async {
+  Future<void> _login(LoginButtonPressed event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
     try {
-      final prefs = await SharedPreferences.getInstance();
-      final isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
-
-      if (isLoggedIn) {
-        emit(AuthAuthenticated());
-      } else {
-        emit(AuthUnauthenticated());
-      }
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: event.email,
+        password: event.password,
+      );
+      emit(AuthAuthenticated(userCredential.user!));
+    } on FirebaseAuthException catch (e) {
+      emit(AuthError(e.code));
     } catch (e) {
-      emit(AuthError('An error occurred: $e'));
+      emit(AuthError("An unexpected error occurred during login."));
     }
   }
 
-  Future<void> _onLoginRequested(
-      LoginRequested event, Emitter<AuthState> emit) async {
+  Future<void> _signUp(
+      SignUpButtonPressed event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
     try {
-      final prefs = await SharedPreferences.getInstance();
-      final savedEmail = prefs.getString('Email') ?? '';
-      final savedPassword = prefs.getString('Password') ?? '';
-
-      await Future.delayed(Duration(seconds: 1));
-
-      if (event.email == savedEmail && event.password == savedPassword) {
-        await prefs.setBool('isLoggedIn', true);
-        emit(AuthAuthenticated());
-      } else {
-        emit(AuthError('Invalid email or password'));
-      }
+      UserCredential userCredential =
+          await _auth.createUserWithEmailAndPassword(
+        email: event.email,
+        password: event.password,
+      );
+      emit(AuthAuthenticated(userCredential.user!));
+    } on FirebaseAuthException catch (e) {
+      emit(AuthError(e.code));
     } catch (e) {
-      emit(AuthError('An error occurred: $e'));
+      emit(AuthError("An unexpected error occurred during sign-up."));
     }
   }
 
-  Future<void> _onLogoutRequested(
-      LogoutRequested event, Emitter<AuthState> emit) async {
+  Future<void> _signOut(SignOutEvent event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
     try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('isLoggedIn', false);
+      await _auth.signOut();
       emit(AuthUnauthenticated());
     } catch (e) {
-      emit(AuthError('An error occurred: $e'));
+      emit(AuthError("An error occurred during sign-out: ${e.toString()}"));
     }
   }
 }

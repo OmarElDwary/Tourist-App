@@ -51,20 +51,20 @@ class S {
   }
 
   /// `Added to favorites`
-  String get addedToFavorites {
+  String get added_to_favorites {
     return Intl.message(
       'Added to favorites',
-      name: 'addedToFavorites',
+      name: 'added_to_favorites',
       desc: '',
       args: [],
     );
   }
 
   /// `Removed from favorites`
-  String get removedFromFavorites {
+  String get removed_from_favorites {
     return Intl.message(
       'Removed from favorites',
-      name: 'removedFromFavorites',
+      name: 'removed_from_favorites',
       desc: '',
       args: [],
     );
@@ -745,6 +745,26 @@ class S {
     return Intl.message(
       'Logout Success',
       name: 'logoutSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading...`
+  String get loading {
+    return Intl.message(
+      'Loading...',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign-up Successful!`
+  String get signUpSuccessful {
+    return Intl.message(
+      'Sign-up Successful!',
+      name: 'signUpSuccessful',
       desc: '',
       args: [],
     );

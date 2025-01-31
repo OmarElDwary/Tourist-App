@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tourist_app/services/landmark_service.dart';
 import 'package:tourist_app/views/blocs/landmarks/landmarks_bloc.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_bloc.dart';
-import 'package:tourist_app/views/screens/home_screen.dart';
 import 'package:tourist_app/views/screens/landmarks_screen.dart';
 import 'package:tourist_app/views/screens/favorites_screen.dart';
 import 'package:tourist_app/views/screens/profile_screen.dart';

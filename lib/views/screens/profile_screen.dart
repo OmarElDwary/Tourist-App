@@ -31,7 +31,7 @@ class ProfileScreen extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.logout),
               onPressed: () {
-                context.read<AuthBloc>().add(LogoutRequested());
+                context.read<AuthBloc>().add(SignOutEvent());
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
