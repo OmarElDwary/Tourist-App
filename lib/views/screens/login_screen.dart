@@ -85,7 +85,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (state is AuthLoading) {
                           return Center(child: CircularProgressIndicator());
                         }
-
                         return CustomButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
