@@ -1,32 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:tourist_app/models/user_model.dart';
+import 'package:tourist_app/models/landmark_model_from_firestore.dart';
+import 'package:tourist_app/models/user_model_from_firestore.dart';
 
 class UsersFirebaseServices {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<void> createUser(UserModel user) async {
+  Future<void> createUser(UserModelFromFirestore user) async {
     try {
-      await _firestore
-          .collection('users')
-          .doc(user.id.toString())
-          .set(user.toJson());
+      await _firestore.collection('users').doc(user.id).set(user.toFirestore());
     } catch (e) {
-      print('Error creating user: $e');
+      throw Exception('Error creating user: $e');
     }
   }
 
-  Future<UserModel?> getUser(String id) async {
+  Future<List<UserModelFromFirestore>> getUsersFromFirebase() async {
     try {
-      final DocumentSnapshot documentSnapshot =
-          await _firestore.collection('users').doc(id).get();
-      if (documentSnapshot.exists) {
-        return UserModel.fromJson(
-            documentSnapshot.data() as Map<String, dynamic>);
-      }
-      return null;
+      List<UserModelFromFirestore> users = [];
+      await _firestore.collection('users').get().then((event) {
+        for (var doc in event.docs) {
+          UserModelFromFirestore.fromFirestore(doc);
+        }
+      });
+      return users;
     } catch (e) {
-      print('Error fetching user: $e');
-      return null;
+      throw Exception('Error fetching user: $e');
     }
   }
 
@@ -36,7 +33,7 @@ class UsersFirebaseServices {
         'favoritePlaces': FieldValue.arrayUnion([placeId]),
       });
     } catch (e) {
-      print('Error adding to favorites: $e');
+      throw Exception('Error adding to favorites: $e');
     }
   }
 
@@ -46,20 +43,29 @@ class UsersFirebaseServices {
         'favoritePlaces': FieldValue.arrayRemove([placeId]),
       });
     } catch (e) {
-      print('Error removing from favorites: $e');
+      throw Exception('Error removing from favorites: $e');
     }
   }
 
-  Future<List<String>> getUserFavorites(String userId) async {
+  Future<List<LandmarkModelFromFirestore>> getUserFavorites(
+      String userId) async {
     try {
       final userDoc = await _firestore.collection('users').doc(userId).get();
       if (userDoc.exists && userDoc.data() != null) {
-        return List<String>.from(userDoc.data()!['favoritePlaces'] ?? []);
+        List<String> favoritePlaceIds =
+            List<String>.from(userDoc.data()!['favoritePlaces']);
+        final landmarksSnapshot = await _firestore
+            .collection('landmarks')
+            .where(FieldPath.documentId, whereIn: favoritePlaceIds)
+            .get();
+
+        return landmarksSnapshot.docs
+            .map((doc) => LandmarkModelFromFirestore.fromFirestore(doc))
+            .toList();
       }
       return [];
     } catch (e) {
-      print('Error fetching user favorites: $e');
-      return [];
+      throw Exception('Error fetching user favorites: $e');
     }
   }
 }
