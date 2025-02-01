@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:tourist_app/main.dart';
 import 'package:tourist_app/services/landmark_service.dart';
 import 'package:tourist_app/services/user_services.dart';
+import 'package:tourist_app/services/users_firebase_services.dart';
 import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/landmarks/landmarks_bloc.dart';
 import 'package:tourist_app/views/blocs/profile/profile_bloc.dart';
@@ -17,9 +18,12 @@ class AppProviders extends StatelessWidget {
   Widget build(BuildContext context) {
     final dio = Dio();
     final landmarksService = LandmarksService(dio: dio);
-
+    final usersFirebaseServices = UsersFirebaseServices();
     return MultiProvider(
       providers: [
+        Provider(
+          create: (context) => usersFirebaseServices,
+        ),
         BlocProvider(
           create: (context) => AuthBloc(),
         ),
@@ -34,7 +38,8 @@ class AppProviders extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-              ProfileBloc(context.read<UserService>())..add(LoadProfile()),
+              ProfileBloc(context.read<UsersFirebaseServices>())
+                ..add(LoadProfile()),
         ),
         BlocProvider(
           create: (context) =>

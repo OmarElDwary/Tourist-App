@@ -97,6 +97,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 SignUpButtonPressed(
                                   email: email.text,
                                   password: password.text,
+                                  fullName: fullName.text,
+                                  phoneNumber: phoneNumber.text,
                                 ),
                               );
                         }
