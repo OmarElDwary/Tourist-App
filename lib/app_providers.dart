@@ -13,6 +13,8 @@ import 'package:tourist_app/views/blocs/theme/theme_bloc.dart';
 import 'package:tourist_app/views/cubits/changeLanguage/change_language_cubit.dart';
 
 class AppProviders extends StatelessWidget {
+  const AppProviders({super.key});
+
   @override
   Widget build(BuildContext context) {
     final dio = Dio();

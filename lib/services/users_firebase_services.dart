@@ -30,7 +30,7 @@ class UsersFirebaseServices {
   Future<void> addToFavorites(String userId, String placeId) async {
     try {
       await _firestore.collection('users').doc(userId).update({
-        'favoritePlaces': FieldValue.arrayUnion([placeId]),
+        'favoriteLandmarks': FieldValue.arrayUnion([placeId]),
       });
     } catch (e) {
       throw Exception('Error adding to favorites: $e');
@@ -40,7 +40,7 @@ class UsersFirebaseServices {
   Future<void> removeFromFavorites(String userId, String placeId) async {
     try {
       await _firestore.collection('users').doc(userId).update({
-        'favoritePlaces': FieldValue.arrayRemove([placeId]),
+        'favoriteLandmarks': FieldValue.arrayRemove([placeId]),
       });
     } catch (e) {
       throw Exception('Error removing from favorites: $e');

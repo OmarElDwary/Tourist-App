@@ -9,14 +9,15 @@ class UserModelFromFirestore {
   final String? passwordHash;
   final List<String>? favoriteLandmarks;
 
-  UserModelFromFirestore(
-      {this.id,
-      this.name,
-      this.email,
-      this.phone,
-      this.image,
-      this.passwordHash,
-      this.favoriteLandmarks});
+  UserModelFromFirestore({
+    this.id,
+    this.name,
+    this.email,
+    this.phone,
+    this.image,
+    this.passwordHash,
+    this.favoriteLandmarks,
+  });
   factory UserModelFromFirestore.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
   ) {
