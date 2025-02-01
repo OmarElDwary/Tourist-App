@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tourist_app/generated/l10n.dart';
 import 'package:tourist_app/models/landmark_model.dart';
+import 'package:tourist_app/models/landmark_model_from_firestore.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_bloc.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_event.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LandmarkCard extends StatelessWidget {
-  final LandmarkModel landMarkModel;
+  final LandmarkModelFromFirestore landMarkModel;
   final bool isFavorite;
 
   const LandmarkCard({
@@ -27,13 +28,13 @@ class LandmarkCard extends StatelessWidget {
           children: [
             Expanded(
               child: Image.network(
-                landMarkModel.image,
+                landMarkModel.image.toString(),
                 width: MediaQuery.of(context).size.width * 8,
               ),
             ),
             const SizedBox(height: 10),
             Text(
-              landMarkModel.name,
+              landMarkModel.name.toString(),
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -41,7 +42,7 @@ class LandmarkCard extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              landMarkModel.government,
+              landMarkModel.government.toString(),
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,

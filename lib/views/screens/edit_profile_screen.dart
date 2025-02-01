@@ -4,7 +4,6 @@ import 'package:tourist_app/views/blocs/profile/profile_bloc.dart';
 import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/blocs/profile/profile_state.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:tourist_app/views/screens/profile_screen.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
@@ -52,6 +51,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
           if (state is ProfileLoaded) {
             _fullNameController.text = state.name;
             _emailController.text = state.email;
+            _passwordController.text = state.passwordHash;
           }
           return SingleChildScrollView(
             child: Padding(
@@ -151,7 +151,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               AppLocalizations.of(context)!.password,
                               style: TextStyle(color: Colors.black),
                             ),
-                            prefixIcon: Icon(Icons.lock,
+                            prefixIcon: Icon(Icons.password,
                                 color: Theme.of(context).primaryColor),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -170,16 +170,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           ),
                           controller: _passwordController,
                           obscureText: true, // Hide the password input
-                          validator: (value) {
-                            if (value != null && value.isEmpty) {
-                              return AppLocalizations.of(context)!
-                                  .enterPassword;
-                            } else if (value != null && value.length < 8) {
-                              return AppLocalizations.of(context)!
-                                  .password_must_be_at_least_6_chars;
-                            }
-                            return null;
-                          },
                         ),
                       ],
                     ),
@@ -192,16 +182,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               name: _fullNameController.text,
                               email: _emailController.text,
                               avatarUrl: "assets/images/no_image.png",
-                              phone: '',
+                              phone: _passwordController.text,
                               passwordHash: '',
                             ));
                       }
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProfileScreen(),
-                        ),
-                      );
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size(150, 40),

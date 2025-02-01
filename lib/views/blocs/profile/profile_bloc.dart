@@ -49,6 +49,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     try {
       final user = _auth.currentUser;
       if (user != null) {
+        print('Updating user profile for UID: ${user.uid}');
         await userServiceFirestore.updateUser(
           UserModelFromFirestore(
             id: user.uid,

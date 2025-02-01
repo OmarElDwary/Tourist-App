@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:tourist_app/services/user_services.dart';
+
 import 'package:tourist_app/services/users_firebase_services.dart';
 import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_event.dart';
@@ -97,7 +97,7 @@ class ProfileScreen extends StatelessWidget {
                         state.email, Icon(Icons.email)),
                     const SizedBox(height: 10),
                     listTileFunc(AppLocalizations.of(context)!.password,
-                        "*******", Icon(Icons.password)),
+                        state.passwordHash, Icon(Icons.password)),
                     SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.all(6.0),

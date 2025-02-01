@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tourist_app/models/landmark_model.dart';
+import 'package:tourist_app/models/landmark_model_from_firestore.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_bloc.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_state.dart';
 import 'package:tourist_app/views/widgets/landmark_card.dart';
@@ -11,13 +11,13 @@ class LandmarksListView extends StatelessWidget {
     required this.landmarks,
   });
 
-  final List<LandmarkModel> landmarks;
+  final List<LandmarkModelFromFirestore> landmarks;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavoriteLandmarksBloc, FavoriteLandmarksState>(
         builder: (context, state) {
-      List<LandmarkModel> favoriteLandmarks = [];
+      List<LandmarkModelFromFirestore> favoriteLandmarks = [];
       if (state is FavoriteLandmarksUpdated) {
         favoriteLandmarks = state.favoriteLandmarks;
       }

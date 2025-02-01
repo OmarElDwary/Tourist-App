@@ -18,14 +18,15 @@ class LandmarkFirebaseServices {
   Future<List<LandmarkModelFromFirestore>> getLandmarksFromFirebase() async {
     try {
       List<LandmarkModelFromFirestore> landmarks = [];
-      await _firestore.collection('landmarks').get().then((event) {
-        for (var doc in event.docs) {
-          LandmarkModelFromFirestore.fromFirestore(doc);
-        }
-      });
+      final querySnapshot = await _firestore.collection('landmarks').get();
+
+      for (var doc in querySnapshot.docs) {
+        landmarks.add(LandmarkModelFromFirestore.fromFirestore(doc));
+      }
+
       return landmarks;
     } catch (e) {
-      throw Exception('Error fetching user: $e');
+      throw Exception('Error fetching landmarks: $e');
     }
   }
 }
