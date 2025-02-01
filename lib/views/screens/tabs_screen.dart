@@ -1,7 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tourist_app/services/landmark_service.dart';
+import 'package:tourist_app/services/landmark_firebase_services.dart';
 import 'package:tourist_app/views/blocs/landmarks/landmarks_bloc.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_bloc.dart';
 import 'package:tourist_app/views/screens/landmarks_screen.dart';
@@ -11,7 +10,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TabsScreen extends StatefulWidget {
   TabsScreen({super.key});
-  final LandmarksService landmarksService = LandmarksService(dio: Dio());
+  final LandmarkFirebaseServices landmarksService = LandmarkFirebaseServices();
 
   @override
   State<TabsScreen> createState() => _TabsScreenState();

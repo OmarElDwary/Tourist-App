@@ -1,11 +1,11 @@
-import 'package:tourist_app/models/landmark_model.dart';
+import 'package:tourist_app/models/landmark_model_from_firestore.dart';
 
 abstract class LandmarksState {}
 
 class LandmarksLoading extends LandmarksState {}
 
 class LandmarksLoaded extends LandmarksState {
-  final List<LandmarkModel> landmarks;
+  final List<LandmarkModelFromFirestore> landmarks;
 
   LandmarksLoaded(this.landmarks);
 }
