@@ -7,15 +7,16 @@ class UserModelFromFirestore {
   final String? phone;
   final String? image;
   final String? passwordHash;
+  final List<String>? favoriteLandmarks;
 
-  UserModelFromFirestore({
-    this.id,
-    this.name,
-    this.email,
-    this.phone,
-    this.image,
-    this.passwordHash,
-  });
+  UserModelFromFirestore(
+      {this.id,
+      this.name,
+      this.email,
+      this.phone,
+      this.image,
+      this.passwordHash,
+      this.favoriteLandmarks});
   factory UserModelFromFirestore.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
   ) {
@@ -27,6 +28,7 @@ class UserModelFromFirestore {
       phone: data?['phone'],
       image: data?['image'],
       passwordHash: data?['passwordHash'],
+      favoriteLandmarks: data?['favoriteLandmarks'],
     );
   }
   Map<String, dynamic> toFirestore() {
@@ -37,6 +39,7 @@ class UserModelFromFirestore {
       if (phone != null) 'phone': phone,
       if (image != null) 'image': image,
       if (passwordHash != null) 'passwordHash': passwordHash,
+      if (favoriteLandmarks != null) 'favoriteLandmarks': favoriteLandmarks,
     };
   }
 }
