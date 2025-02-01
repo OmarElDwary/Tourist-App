@@ -1,14 +1,18 @@
 import 'package:bloc/bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tourist_app/services/user_services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'package:tourist_app/models/user_model_from_firestore.dart';
+
+import 'package:tourist_app/services/users_firebase_services.dart';
 
 import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/blocs/profile/profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  final UserService userService;
+  final UsersFirebaseServices userServiceFirestore;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  ProfileBloc(this.userService) : super(ProfileInitial()) {
+  ProfileBloc(this.userServiceFirestore) : super(ProfileInitial()) {
     on<LoadProfile>(_onLoadProfile);
     on<UpdateProfile>(_onUpdateProfile);
   }
@@ -17,15 +21,23 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       LoadProfile event, Emitter<ProfileState> emit) async {
     emit(ProfileLoading());
     try {
-      final prefs = await SharedPreferences.getInstance();
-      final name = prefs.getString('Name');
-      final email = prefs.getString('Email');
-
-      emit(ProfileLoaded(
-        name: name ?? '',
-        email: email ?? '',
-        avatarUrl: "assets/images/no_image.png",
-      ));
+      final user = _auth.currentUser;
+      if (user != null) {
+        final userDoc = await userServiceFirestore.getUserByUID(user.uid);
+        if (userDoc != null) {
+          emit(ProfileLoaded(
+            name: userDoc.name ?? '',
+            email: userDoc.email ?? '',
+            avatarUrl: userDoc.image ?? "assets/images/no_image.png",
+            phone: userDoc.phone ?? '',
+            passwordHash: userDoc.passwordHash ?? '',
+          ));
+        } else {
+          emit(ProfileError('User not found'));
+        }
+      } else {
+        emit(ProfileError('User not logged in'));
+      }
     } catch (e) {
       emit(ProfileError('Failed to load profile: ${e.toString()}'));
     }
@@ -35,20 +47,33 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       UpdateProfile event, Emitter<ProfileState> emit) async {
     emit(ProfileLoading());
     try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('Name', event.name);
-      await prefs.setString('Email', event.email);
-
-      emit(ProfileUpdated(
-        name: event.name,
-        email: event.email,
-        avatarUrl: event.avatarUrl,
-      ));
-      emit(ProfileLoaded(
-        name: event.name,
-        email: event.email,
-        avatarUrl: event.avatarUrl,
-      ));
+      final user = _auth.currentUser;
+      if (user != null) {
+        await userServiceFirestore.updateUser(
+          UserModelFromFirestore(
+            id: user.uid,
+            name: event.name,
+            email: event.email,
+            image: event.avatarUrl,
+            phone: event.phone,
+            passwordHash: event.passwordHash,
+          ),
+        );
+        emit(ProfileUpdated(
+            name: event.name,
+            email: event.email,
+            avatarUrl: event.avatarUrl,
+            phone: event.phone,
+            passwordHash: event.passwordHash));
+        emit(ProfileLoaded(
+            name: event.name,
+            email: event.email,
+            avatarUrl: event.avatarUrl,
+            phone: event.phone,
+            passwordHash: event.passwordHash));
+      } else {
+        emit(ProfileError('User not logged in'));
+      }
     } catch (e) {
       emit(ProfileError('Failed to update profile: ${e.toString()}'));
     }

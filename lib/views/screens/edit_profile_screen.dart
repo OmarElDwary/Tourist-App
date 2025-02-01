@@ -53,7 +53,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
             _fullNameController.text = state.name;
             _emailController.text = state.email;
           }
-
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -141,6 +140,47 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             return null;
                           },
                         ),
+                        SizedBox(height: 20),
+                        TextFormField(
+                          style: TextStyle(color: Colors.black),
+                          enableInteractiveSelection: true,
+                          cursorColor: Theme.of(context).primaryColor,
+                          decoration: InputDecoration(
+                            hintStyle: const TextStyle(color: Colors.black),
+                            label: Text(
+                              AppLocalizations.of(context)!.password,
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            prefixIcon: Icon(Icons.lock,
+                                color: Theme.of(context).primaryColor),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(
+                                width: 3,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(
+                                width: 3,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
+                          ),
+                          controller: _passwordController,
+                          obscureText: true, // Hide the password input
+                          validator: (value) {
+                            if (value != null && value.isEmpty) {
+                              return AppLocalizations.of(context)!
+                                  .enterPassword;
+                            } else if (value != null && value.length < 8) {
+                              return AppLocalizations.of(context)!
+                                  .password_must_be_at_least_6_chars;
+                            }
+                            return null;
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -152,6 +192,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               name: _fullNameController.text,
                               email: _emailController.text,
                               avatarUrl: "assets/images/no_image.png",
+                              phone: '',
+                              passwordHash: '',
                             ));
                       }
                       Navigator.pushReplacement(
