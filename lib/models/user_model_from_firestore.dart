@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:tourist_app/models/landmark_model.dart';
 
 class UserModelFromFirestore {
   final String? id;
@@ -7,7 +8,7 @@ class UserModelFromFirestore {
   final String? phone;
   final String? image;
   final String? passwordHash;
-  final List<String>? favoriteLandmarks;
+  final List<LandmarkModel>? favoriteLandmarks;
 
   UserModelFromFirestore({
     this.id,
