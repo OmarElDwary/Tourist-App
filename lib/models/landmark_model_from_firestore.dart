@@ -5,6 +5,7 @@ class LandmarkModelFromFirestore {
   final String? name;
   final String? image;
   final String? government;
+  final String? description;
   final bool? isFavorite;
 
   LandmarkModelFromFirestore({
@@ -12,6 +13,7 @@ class LandmarkModelFromFirestore {
     this.name,
     this.image,
     this.government,
+    this.description,
     this.isFavorite,
   });
   factory LandmarkModelFromFirestore.fromFirestore(
@@ -23,6 +25,7 @@ class LandmarkModelFromFirestore {
       name: data?['name'],
       image: data?['image'],
       government: data?['government'],
+      description: data?['description'],
       isFavorite: data?['isFavorite'],
     );
   }
@@ -32,6 +35,7 @@ class LandmarkModelFromFirestore {
       if (name != null) 'name': name,
       if (image != null) 'image': image,
       if (government != null) 'government': government,
+      if (description != null) 'description': description,
       if (isFavorite != null) 'isFavorite': isFavorite,
     };
   }
