@@ -28,7 +28,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           emit(ProfileLoaded(
             name: userDoc.name ?? '',
             email: userDoc.email ?? '',
-            avatarUrl: userDoc.image ?? "assets/images/no_image.png",
+            avatarUrl: userDoc.image?.isNotEmpty == true
+                ? userDoc.image!
+                : "assets/images/no_image.png",
             phone: userDoc.phone ?? '',
             passwordHash: userDoc.passwordHash ?? '',
           ));

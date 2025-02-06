@@ -1,12 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/widgets.dart';
 import 'package:tourist_app/models/landmark_model_from_firestore.dart';
 import 'package:tourist_app/models/user_model_from_firestore.dart';
 
 class UsersFirebaseServices {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<void> createUser(UserModelFromFirestore user) async {
     try {

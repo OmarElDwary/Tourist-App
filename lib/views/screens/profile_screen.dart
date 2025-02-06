@@ -86,8 +86,7 @@ class ProfileScreen extends StatelessWidget {
                     const SizedBox(height: 2),
                     CircleAvatar(
                       radius: 30,
-                      backgroundImage:
-                          const AssetImage('assets/images/no_image.png'),
+                      backgroundImage: AssetImage(state.avatarUrl),
                     ),
                     const SizedBox(height: 30),
                     listTileFunc(AppLocalizations.of(context)!.fullName,

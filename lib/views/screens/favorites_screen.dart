@@ -7,7 +7,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,14 +19,12 @@ class FavoritesScreen extends StatelessWidget {
           // Check the state for favorites
           if (state is FavoriteLandmarksUpdated) {
             final favoriteLandmarks = state.favoriteLandmarks;
-
             return ListView.builder(
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               itemCount: favoriteLandmarks.length,
               itemBuilder: (ctx, index) {
                 var favoriteLandmark = favoriteLandmarks[index];
-
                 return Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: LandmarkCard(

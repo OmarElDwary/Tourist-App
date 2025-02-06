@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tourist_app/views/blocs/profile/profile_bloc.dart';
@@ -26,6 +27,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     context.read<ProfileBloc>().add(LoadProfile());
   }
 
+  File? imageFile;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +64,61 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     key: _formKey,
                     child: Column(
                       children: [
+                        const SizedBox(height: 2),
+                        Stack(
+                          alignment: Alignment.bottomRight,
+                          children: [
+                            CircleAvatar(
+                              radius: 30,
+                              backgroundImage: state is ProfileLoaded
+                                  ? (state.avatarUrl !=
+                                          "assets/images/no_image.png"
+                                      ? NetworkImage(state.avatarUrl)
+                                      : AssetImage(state.avatarUrl)
+                                          as ImageProvider)
+                                  : AssetImage("assets/images/no_image.png")
+                                      as ImageProvider,
+                            ),
+                            if (state is ProfileLoaded)
+                              state.avatarUrl == "assets/images/no_image.png"
+                                  ? IconButton(
+                                      icon: Icon(Icons.add_a_photo),
+                                      onPressed: () {
+                                        // Upload image function
+                                      },
+                                    )
+                                  : Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(Icons.delete),
+                                          onPressed: () {
+                                            context.read<ProfileBloc>().add(
+                                                  UpdateProfile(
+                                                    name: _fullNameController
+                                                        .text,
+                                                    email:
+                                                        _emailController.text,
+                                                    avatarUrl:
+                                                        "assets/images/no_image.png",
+                                                    passwordHash:
+                                                        _passwordController
+                                                            .text,
+                                                    phone: state.phone,
+                                                  ),
+                                                );
+                                          },
+                                        ),
+                                        IconButton(
+                                          icon: Icon(Icons.edit),
+                                          onPressed: () {
+                                            // Change image function
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                          ],
+                        ),
                         SizedBox(height: 20),
                         TextFormField(
                           style: TextStyle(color: Colors.black),
@@ -179,12 +236,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         context.read<ProfileBloc>().add(UpdateProfile(
-                              name: _fullNameController.text,
-                              email: _emailController.text,
-                              avatarUrl: "assets/images/no_image.png",
-                              phone: _passwordController.text,
-                              passwordHash: '',
-                            ));
+                            name: _fullNameController.text,
+                            email: _emailController.text,
+                            avatarUrl: "assets/images/no_image.png",
+                            passwordHash: _passwordController.text,
+                            phone: ""));
                       }
                     },
                     style: ElevatedButton.styleFrom(
