@@ -6,6 +6,8 @@ class LandmarkModel {
   final String name;
   final String description;
   final String government;
+  final double latitude;
+  final double longitude;
 
   LandmarkModel({
     required this.id,
@@ -13,15 +15,19 @@ class LandmarkModel {
     required this.name,
     required this.description,
     required this.government,
+    required this.latitude,
+    required this.longitude,
   });
 
   factory LandmarkModel.fromJson(Map<String, dynamic> json) {
     return LandmarkModel(
-      id: json['id'],
-      image: json['image'],
-      name: json['name'],
-      description: json['description'],
-      government: json['government'],
+      id: json['id'].toString(),
+      image: json['image'] ?? '',
+      name: json['name'] ?? 'Unknown',
+      description: json['description'] ?? 'No description available',
+      government: json['government'] ?? 'Unknown',
+      latitude: (json['latitude'] as num?)?.toDouble() ?? 0.0,
+      longitude: (json['longitude'] as num?)?.toDouble() ?? 0.0,
     );
   }
   Map<String, dynamic> toJson() {
@@ -31,6 +37,8 @@ class LandmarkModel {
       'image': image,
       'description': description,
       'government': government,
+      'latitude': latitude,
+      'longitude': longitude,
     };
   }
 

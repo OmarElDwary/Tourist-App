@@ -11,13 +11,37 @@ class LandmarksService {
 
   Future<List<LandmarkModel>> fetchLandmarks() async {
     try {
+      debugPrint('Fetching landmarks from: $baseUrl');
       Response response = await dio.get(baseUrl);
 
+      debugPrint('Response status code: ${response.statusCode}');
       debugPrint('Response received: ${response.data}');
       if (response.statusCode == 200 && response.data != null) {
         List<dynamic> landmarksData = response.data;
+//         final landmarksList = landmarksData
+//             .map((landmarkData) => LandmarkModel.fromJson(landmarkData))
+//             .toList();
+//
+//         return landmarksList;
+//       } else {
+//         throw Exception('Failed to load landmarks');
+//       }
+//     } catch (e) {
+//       throw Exception('Failed to load landmarks: $e');
+//     }
+//   }
+// }
         final landmarksList = landmarksData
-            .map((landmarkData) => LandmarkModel.fromJson(landmarkData))
+            .map((landmarkData) {
+              try {
+                return LandmarkModel.fromJson(landmarkData);
+              } catch (e) {
+                debugPrint('Error parsing landmark: $e');
+                return null;
+              }
+            })
+            .where((e) => e != null)
+            .cast<LandmarkModel>()
             .toList();
 
         return landmarksList;
@@ -25,6 +49,7 @@ class LandmarksService {
         throw Exception('Failed to load landmarks');
       }
     } catch (e) {
+      debugPrint('Error fetching landmarks: $e');
       throw Exception('Failed to load landmarks: $e');
     }
   }
