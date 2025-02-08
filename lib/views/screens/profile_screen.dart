@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -86,7 +88,10 @@ class ProfileScreen extends StatelessWidget {
                     const SizedBox(height: 2),
                     CircleAvatar(
                       radius: 30,
-                      backgroundImage: AssetImage(state.avatarUrl),
+                      backgroundImage: state.avatarUrl ==
+                              "assets/images/no_image.png"
+                          ? AssetImage(state.avatarUrl)
+                          : FileImage(File(state.avatarUrl)) as ImageProvider,
                     ),
                     const SizedBox(height: 30),
                     listTileFunc(AppLocalizations.of(context)!.fullName,

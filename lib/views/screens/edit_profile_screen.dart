@@ -51,11 +51,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
           }
         },
         builder: (context, state) {
-          // Pre-fill the form fields when the state is ProfileLoaded
           if (state is ProfileLoaded) {
             _fullNameController.text = state.name;
             _emailController.text = state.email;
             _passwordController.text = state.passwordHash;
+            imgPath ??= File(state.avatarUrl);
           }
           return SingleChildScrollView(
             child: Padding(
@@ -72,21 +72,27 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           children: [
                             CircleAvatar(
                               radius: 30,
-                              backgroundImage: state is ProfileLoaded
-                                  ? (state.avatarUrl !=
-                                          "assets/images/no_image.png"
-                                      ? NetworkImage(state.avatarUrl)
-                                      : AssetImage(state.avatarUrl)
-                                          as ImageProvider)
-                                  : AssetImage("assets/images/no_image.png")
-                                      as ImageProvider,
+                              backgroundImage: imgPath != null
+                                  ? FileImage(imgPath!)
+                                  : (state is ProfileLoaded &&
+                                          state.avatarUrl !=
+                                              "assets/images/no_image.png"
+                                      ? FileImage(File(state.avatarUrl))
+                                      : AssetImage("assets/images/no_image.png")
+                                          as ImageProvider),
                             ),
                             if (state is ProfileLoaded)
                               state.avatarUrl == "assets/images/no_image.png"
                                   ? IconButton(
                                       icon: Icon(Icons.add_a_photo),
-                                      onPressed: () {
-                                        // Upload image function
+                                      onPressed: () async {
+                                        final XFile? image =
+                                            await picker.pickImage(
+                                                source: ImageSource.gallery);
+                                        if (image != null) {
+                                          imgPath = File(image.path);
+                                        }
+                                        setState(() {});
                                       },
                                     )
                                   : Row(
@@ -109,6 +115,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                                     phone: state.phone,
                                                   ),
                                                 );
+                                            setState(() {
+                                              imgPath = null;
+                                            });
                                           },
                                         ),
                                         IconButton(
@@ -247,7 +256,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         context.read<ProfileBloc>().add(UpdateProfile(
                             name: _fullNameController.text,
                             email: _emailController.text,
-                            avatarUrl: "assets/images/no_image.png",
+                            avatarUrl:
+                                imgPath?.path ?? "assets/images/no_image.png",
                             passwordHash: _passwordController.text,
                             phone: ""));
                       }
