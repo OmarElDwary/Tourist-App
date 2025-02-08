@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:tourist_app/views/blocs/profile/profile_bloc.dart';
 import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/blocs/profile/profile_state.dart';
@@ -27,7 +28,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
     context.read<ProfileBloc>().add(LoadProfile());
   }
 
-  File? imageFile;
+  File? imgPath;
+  final ImagePicker picker = ImagePicker();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,8 +113,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                         ),
                                         IconButton(
                                           icon: Icon(Icons.edit),
-                                          onPressed: () {
-                                            // Change image function
+                                          onPressed: () async {
+                                            final XFile? image =
+                                                await picker.pickImage(
+                                                    source:
+                                                        ImageSource.gallery);
+                                            if (image != null) {
+                                              imgPath = File(image.path);
+                                            }
+                                            setState(() {});
                                           },
                                         ),
                                       ],
