@@ -29,4 +29,4 @@ Maps, and allowing users to manage their profile.
 
 | Profile Image               | Map              | Marker                | Auth                 |
 |-----------------------------|------------------|-----------------------|----------------------|
-| ![Profile Image](login.png) | ![Map](sign.png) | ![Marker](logout.png) | ![Auth](Profile.png) |
+| ![Profile Image](login.png) | ![Map](Map.jpg) | ![Marker](logout.png) | ![Auth](Profile.png) |
