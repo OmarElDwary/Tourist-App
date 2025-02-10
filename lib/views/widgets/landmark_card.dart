@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tourist_app/generated/l10n.dart';
-import 'package:tourist_app/models/landmark_model.dart';
 import 'package:tourist_app/models/landmark_model_from_firestore.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_bloc.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_event.dart';
@@ -69,7 +68,7 @@ class LandmarkCard extends StatelessWidget {
                   onPressed: () {
                     context.read<FavoriteLandmarksBloc>().add(
                           ToggleLandmarkFavoriteStatus(landMarkModel),
-                    );
+                        );
 
                     ScaffoldMessenger.of(context).clearSnackBars();
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -92,8 +91,8 @@ class LandmarkCard extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    _openGoogleMaps(
-                        landMarkModel.latitude, landMarkModel.longitude);
+                    _openGoogleMaps(landMarkModel.latitude ?? 0,
+                        landMarkModel.longitude ?? 0);
                   },
                   icon: const Icon(Icons.map, color: Colors.blue),
                 ),
