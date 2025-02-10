@@ -6,8 +6,8 @@ class LandmarkModelFromFirestore {
   final String? image;
   final String? government;
   final bool? isFavorite;
-  final double? latitude;
-  final double? longitude;
+  final String? lat;
+  final String? long;
 
   LandmarkModelFromFirestore({
     this.id,
@@ -15,8 +15,8 @@ class LandmarkModelFromFirestore {
     this.image,
     this.government,
     this.isFavorite,
-    this.latitude,
-    this.longitude,
+    this.lat,
+    this.long,
   });
   factory LandmarkModelFromFirestore.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
@@ -28,8 +28,8 @@ class LandmarkModelFromFirestore {
       image: data?['image'],
       government: data?['government'],
       isFavorite: data?['isFavorite'],
-      latitude: data?['latitude'],
-      longitude: data?['longitude'],
+      lat: data?['lat'],
+      long: data?['long'],
     );
   }
   Map<String, dynamic> toFirestore() {
@@ -39,8 +39,8 @@ class LandmarkModelFromFirestore {
       if (image != null) 'image': image,
       if (government != null) 'government': government,
       if (isFavorite != null) 'isFavorite': isFavorite,
-      if (latitude != null) 'latitude': latitude,
-      if (longitude != null) 'longitude': longitude,
+      if (lat != null) 'lat': lat,
+      if (long != null) 'long': long,
     };
   }
 }
