@@ -6,8 +6,8 @@ class LandmarkModelFromFirestore {
   final String? image;
   final String? government;
   final bool? isFavorite;
-  final String? lat;
-  final String? long;
+  final double? lat;
+  final double? long;
 
   LandmarkModelFromFirestore({
     this.id,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tourist_app/generated/l10n.dart';
 import 'package:tourist_app/models/landmark_model_from_firestore.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_bloc.dart';
 import 'package:tourist_app/views/blocs/favorite/favorite_event.dart';
@@ -17,9 +16,9 @@ class LandmarkCard extends StatelessWidget {
     required this.isFavorite,
   });
 
-  void _openGoogleMaps(double latitude, double longitude) async {
-    final Uri url = Uri.parse(
-        'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude');
+  void _openGoogleMaps(double lat, double long) async {
+    final Uri url =
+        Uri.parse('https://www.google.com/maps/search/?api=1&query=$lat,$long');
 
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
@@ -91,8 +90,10 @@ class LandmarkCard extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    _openGoogleMaps(landMarkModel.latitude ?? 0,
-                        landMarkModel.longitude ?? 0);
+                    _openGoogleMaps(
+                      landMarkModel.lat ?? 0,
+                      landMarkModel.long ?? 0,
+                    );
                   },
                   icon: const Icon(Icons.map, color: Colors.blue),
                 ),
