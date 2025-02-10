@@ -62,10 +62,23 @@ class _LandmarksScreenState extends State<LandmarksScreen> {
             ),
           );
         } else if (state is LandmarksError) {
-          return Center(child: Text("Error: ${state.message}"));
-        } else {
-          return const Center(child: Text('Unknown State'));
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Error: ${state.message}"),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<LandmarksBloc>().add(LoadLandmarks());
+                  },
+                  child: const Text('Retry'),
+                ),
+              ],
+            ),
+          );
         }
+        return const Center(child: Text('No data available'));
       },
     );
   }

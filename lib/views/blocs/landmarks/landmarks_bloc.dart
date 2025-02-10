@@ -21,13 +21,15 @@ class LandmarksBloc extends Bloc<LandmarksEvent, LandmarksState> {
   Future<void> _onLoadLandmarks(
       LoadLandmarks event, Emitter<LandmarksState> emit) async {
     try {
-      debugPrint('fetching');
+      debugPrint('Fetching landmarks...');
       emit(LandmarksLoading()); // Show loading state
-      final List<LandmarkModelFromFirestore> landmarks =
-          await landmarksService.getLandmarksFromFirebase();
+      final List<LandmarkModel> landmarks =
+          await landmarksService.fetchLandmarks();
+      debugPrint('Fetched ${landmarks.length} landmarks');
       emit(LandmarksLoaded(landmarks)); // Show loaded landmarks
     } catch (e) {
-      emit(LandmarksError("Failed to load landmarks")); // Show error state
+      debugPrint('Error loading landmarks: $e');
+      emit(LandmarksError("Failed to load landmarks: $e"));
     }
   }
 }
