@@ -30,7 +30,6 @@ class _LandmarksScreenState extends State<LandmarksScreen> {
         if (state is LandmarksLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is LandmarksLoaded) {
-          // Define the list of tabs
           List<Widget> tabs = [
             LandmarksGridView(landmarks: state.landmarks),
             LandmarksListView(landmarks: state.landmarks),
