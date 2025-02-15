@@ -9,6 +9,8 @@ Maps, and allowing users to manage their profile.
 2. **Google Maps Integration**: Landmarks are displayed on a map, and users can navigate to them
    using Google Maps.
 3. **Fingerprint Authentication**: Users must authenticate via fingerprint to access their profile.
+4. **Solid principle**: Refactoring the project to SOLID principle
+5. **2 Design patterns**: **Builder**in Listview & Gridview, and **Factory** in Models.
 
 ## How to Use
 
