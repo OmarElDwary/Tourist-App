@@ -1,10 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:tourist_app/models/user_model_from_firestore.dart';
-
 import 'package:tourist_app/services/users_firebase_services.dart';
-
 import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/blocs/profile/profile_state.dart';
 
@@ -12,7 +9,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final UsersFirebaseServices userServiceFirestore;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  ProfileBloc(this.userServiceFirestore) : super(ProfileInitial()) {
+  ProfileBloc({required this.userServiceFirestore}) : super(ProfileInitial()) {
     on<LoadProfile>(_onLoadProfile);
     on<UpdateProfile>(_onUpdateProfile);
   }
@@ -51,7 +48,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     try {
       final user = _auth.currentUser;
       if (user != null) {
-        print('Updating user profile for UID: ${user.uid}');
         await userServiceFirestore.updateUser(
           UserModelFromFirestore(
             id: user.uid,
