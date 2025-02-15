@@ -11,6 +11,8 @@ import 'package:tourist_app/views/blocs/profile/profile_bloc.dart';
 import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/blocs/theme/theme_bloc.dart';
 import 'package:tourist_app/views/cubits/changeLanguage/change_language_cubit.dart';
+import 'package:tourist_app/views/screens/profile_screen.dart';
+import 'package:tourist_app/views/user_service_singleton.dart';
 
 class AppProviders extends StatelessWidget {
   @override
@@ -36,8 +38,9 @@ class AppProviders extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-              ProfileBloc(context.read<UsersFirebaseServices>())
+              ProfileBloc(userServiceFirestore: UserServiceSingleton().service)
                 ..add(LoadProfile()),
+          child: ProfileScreen(),
         ),
         BlocProvider(
           create: (context) =>
