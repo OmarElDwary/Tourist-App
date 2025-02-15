@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_event.dart';
-import 'package:tourist_app/views/screens/login_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tourist_app/views/screens/login/login_screen.dart';
 import 'package:tourist_app/views/screens/settings_screen.dart';
 
 class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
