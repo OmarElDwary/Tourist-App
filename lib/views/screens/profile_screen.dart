@@ -12,7 +12,6 @@ import 'package:tourist_app/views/screens/edit_profile_screen.dart';
 import 'package:tourist_app/views/screens/settings_screen.dart';
 import 'package:tourist_app/views/widgets/list_tile.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'login/login_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -34,11 +33,12 @@ class ProfileScreen extends StatelessWidget {
               icon: Icon(Icons.logout),
               onPressed: () {
                 context.read<AuthBloc>().add(SignOutEvent());
-                Navigator.pushReplacement(
+                Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
                     builder: (context) => LoginScreen(),
                   ),
+                 (route) => false,
                 );
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -86,7 +86,7 @@ class ProfileScreen extends StatelessWidget {
                   child: Column(children: [
                     const SizedBox(height: 2),
                     CircleAvatar(
-                      radius: 30,
+                      radius: 60,
                       backgroundImage: state.avatarUrl ==
                               "assets/images/no_image.png"
                           ? AssetImage(state.avatarUrl)
