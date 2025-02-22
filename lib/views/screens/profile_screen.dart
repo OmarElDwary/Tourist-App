@@ -1,9 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-
 import 'package:tourist_app/services/users_firebase_services.dart';
 import 'package:tourist_app/views/blocs/auth/auth_bloc.dart';
 import 'package:tourist_app/views/blocs/auth/auth_event.dart';
@@ -11,10 +9,11 @@ import 'package:tourist_app/views/blocs/profile/profile_bloc.dart';
 import 'package:tourist_app/views/blocs/profile/profile_event.dart';
 import 'package:tourist_app/views/blocs/profile/profile_state.dart';
 import 'package:tourist_app/views/screens/edit_profile_screen.dart';
-import 'package:tourist_app/views/screens/login_screen.dart';
 import 'package:tourist_app/views/screens/settings_screen.dart';
 import 'package:tourist_app/views/widgets/list_tile.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'login/login_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
