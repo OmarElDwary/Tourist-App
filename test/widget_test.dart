@@ -1,30 +1,36 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:provider/provider.dart';
+import 'package:tourist_app/services/users_firebase_services.dart';
+import 'package:tourist_app/views/blocs/profile/profile_bloc.dart';
+import 'package:tourist_app/views/screens/edit_profile_screen.dart';
+import 'package:mockito/mockito.dart';
 
-import 'package:tourist_app/main.dart';
+class MockFirebaseServices extends Mock implements UsersFirebaseServices {}
+
+class MockFirebaseAuth extends Mock implements FirebaseAuth {}
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+  testWidgets('text fields should be updated when new value enters',
+      (WidgetTester tester) async {
+    final mockUsersFirebaseServices = MockFirebaseServices();
+    await tester.pumpWidget(MaterialApp(
+        home: Provider<ProfileBloc>(
+            create: (_) => ProfileBloc(mockUsersFirebaseServices),
+            child: EditProfilePage())));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    final textFields = find.byType(TextFormField);
+    expect(textFields, findsNWidgets(3));
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    debugDumpApp();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await tester.enterText(textFields.at(0), 'Omar');
+    await tester.enterText(textFields.at(1), 'omer@yahoo.com');
+    await tester.enterText(textFields.at(2), '1234567');
+
+    expect(find.text('Omar'), findsOneWidget);
+    expect(find.text('omer@yahoo.com'), findsOneWidget);
+    expect(find.text('1234567'), findsOneWidget);
   });
 }
